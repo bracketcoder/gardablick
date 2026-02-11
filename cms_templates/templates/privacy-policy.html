@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Privacy Policy" %}{% endblock %}
+
+{% block content %}
+<!-- ============ HERO SECTION ============ -->
+<section class="bg-[#02033b] pt-32 pb-16 px-4 md:px-[30px]">
+    <div class="max-w-[1280px] mx-auto">
+        <h1 class="text-white text-[36px] md:text-[48px] font-bold uppercase">
+            Privacy Policy
+        </h1>
+    </div>
+</section>
+
+<!-- ============ CONTENT SECTION ============ -->
+<section class="py-16 px-4 md:px-[30px]">
+    <div class="max-w-[1280px] mx-auto">
+        <div class="prose prose-lg max-w-none">
+
+            <!-- Privacy Policy -->
+            <div class="mb-12">
+                <h2 class="text-[#02033b] text-[28px] md:text-[32px] font-bold mb-6">
+                    {{ privacy_title }}
+                </h2>
+
+                <div class="space-y-6 text-[#333] text-[16px] leading-[1.8]">
+                    <div>
+                        <h3 class="text-[#02033b] text-[20px] font-semibold mb-3">{% trans "Titolare del Trattamento" %}</h3>
+                        <p>{{ data_controller|linebreaksbr }}</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-[#02033b] text-[20px] font-semibold mb-3">{% trans "Base Giuridica" %}</h3>
+                        <p>{{ legal_basis }}</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-[#02033b] text-[20px] font-semibold mb-3">{% trans "Finalità della Raccolta Dati" %}</h3>
+                        <ul class="list-disc pl-6 space-y-2">
+                            {% for item in data_purposes_list %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-[#02033b] text-[20px] font-semibold mb-3">{% trans "Condivisione dei Dati" %}</h3>
+                        <p>{{ data_sharing }}</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-[#02033b] text-[20px] font-semibold mb-3">{% trans "Conservazione dei Dati" %}</h3>
+                        <p>{{ data_storage }}</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-[#02033b] text-[20px] font-semibold mb-3">{% trans "Periodo di Conservazione" %}</h3>
+                        <p>{{ retention_period }}</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-[#02033b] text-[20px] font-semibold mb-3">{% trans "Diritti dell'Utente" %}</h3>
+                        <p>{{ user_rights }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cookie Policy -->
+            <div class="pt-8 border-t border-gray-200">
+                <h2 class="text-[#02033b] text-[28px] md:text-[32px] font-bold mb-6">
+                    {{ cookie_title }}
+                </h2>
+
+                <div class="space-y-6 text-[#333] text-[16px] leading-[1.8]">
+                    <div>
+                        <h3 class="text-[#02033b] text-[20px] font-semibold mb-3">{% trans "Tipologie Utilizzate" %}</h3>
+                        <ul class="list-disc pl-6 space-y-3">
+                            {% for item in cookie_types_list %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-[#02033b] text-[20px] font-semibold mb-3">{% trans "Requisiti di Consenso" %}</h3>
+                        <p>{{ consent_requirements }}</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-[#02033b] text-[20px] font-semibold mb-3">{% trans "Cookie Elencati" %}</h3>
+                        <p>{{ cookies_listed|linebreaksbr }}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

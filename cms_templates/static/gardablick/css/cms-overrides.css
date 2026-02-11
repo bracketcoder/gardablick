@@ -1,0 +1,74 @@
+/* ============================================
+   Gardablick — CSS Overrides
+   Fixes and additions not covered by the
+   compiled Tailwind CSS from Next.js build.
+   ============================================ */
+
+/* Fix select dropdown arrows in Safari/Firefox */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: none;
+}
+
+/* Line clamp utility (if not in Tailwind build) */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Smooth scroll for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Header scrolled state */
+#gb-header.scrolled {
+    background-color: #fff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+#gb-header.scrolled .nav-link {
+    color: #02033b !important;
+}
+
+#gb-header.scrolled .lang-link {
+    color: #02033b !important;
+}
+
+#gb-header.scrolled .lang-divider {
+    background-color: rgba(2, 3, 59, 0.3) !important;
+}
+
+#gb-header.scrolled #mobile-menu-btn {
+    color: #02033b;
+}
+
+#gb-header.scrolled .hamburger-line {
+    background-color: #02033b !important;
+}
+
+/* Mobile menu open state for hamburger icon */
+#mobile-menu-btn[aria-expanded="true"] .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translateY(5px) translateX(5px);
+}
+
+#mobile-menu-btn[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+#mobile-menu-btn[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translateY(-5px) translateX(5px);
+}
+
+/* Prose styles for privacy policy */
+.prose h3 {
+    margin-top: 0;
+}
+
+.prose ul {
+    margin-top: 0.5rem;
+}

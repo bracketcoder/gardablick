@@ -1,0 +1,43 @@
+<!-- Page Transition Loader -->
+<div id="page-loader" class="fixed inset-0 bg-[#02033b] z-[9999] flex items-center justify-center">
+    <style>
+        @keyframes waveFlow {
+            0%   { d: path("M20 132 C45 118, 60 118, 80 130 C100 142, 120 138, 145 124"); }
+            25%  { d: path("M20 128 C48 140, 62 110, 82 126 C102 140, 122 114, 145 130"); }
+            50%  { d: path("M20 132 C42 116, 58 138, 78 122 C98 106, 124 136, 145 120"); }
+            75%  { d: path("M20 136 C44 120, 56 134, 76 120 C96 106, 118 132, 145 126"); }
+            100% { d: path("M20 132 C45 118, 60 118, 80 130 C100 142, 120 138, 145 124"); }
+        }
+        @keyframes fadeInUp {
+            0%   { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes houseGlow {
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(255,255,255,0.15)); }
+            50%      { filter: drop-shadow(0 0 20px rgba(255,255,255,0.35)); }
+        }
+        #page-loader .loader-wave {
+            animation: waveFlow 3s ease-in-out infinite;
+        }
+        #page-loader .loader-container {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        #page-loader .loader-house {
+            animation: houseGlow 3s ease-in-out infinite;
+        }
+        #page-loader.fade-out {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+    </style>
+
+    <div class="loader-container flex flex-col items-center">
+        <svg class="loader-house" width="160" height="150" viewBox="0 0 160 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- House outline -->
+            <path d="M38 110 V62 H22 L80 12 L138 62 H122 V110" stroke="white" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+            <!-- Animated wave -->
+            <path class="loader-wave" d="M20 132 C45 118, 60 118, 80 130 C100 142, 120 138, 145 124" stroke="white" stroke-width="8" stroke-linecap="round" fill="none"/>
+        </svg>
+    </div>
+</div>

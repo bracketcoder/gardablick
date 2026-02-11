@@ -1,0 +1,360 @@
+[
+{
+  "model": "pages.privacypolicy",
+  "pk": 1,
+  "fields": {
+    "privacy_title": {
+      "it": "Informativa sulla tutela dei dati personali",
+      "en": "Personal Data Protection Policy",
+      "de": "Datenschutzrichtlinie"
+    },
+    "data_controller": {
+      "it": "GB Immobiliare Srl, con sede in Piazza Bresciani 3, 25087 Salò (BS).\nContatto: info@gardablick.com",
+      "en": "GB Immobiliare Srl, headquartered at Piazza Bresciani 3, 25087 Salò (BS), Italy.\nContact: info@gardablick.com",
+      "de": "GB Immobiliare Srl, mit Sitz in Piazza Bresciani 3, 25087 Salò (BS), Italien.\nKontakt: info@gardablick.com"
+    },
+    "legal_basis": {
+      "it": "La società tratta i dati personali ai sensi del GDPR (Regolamento UE 2016/679) sulla base del consenso dell'utente, dell'esecuzione del contratto o di obblighi di legge.",
+      "en": "The company processes personal data in accordance with GDPR (EU Regulation 2016/679) based on user consent, contract execution, or legal obligations.",
+      "de": "Das Unternehmen verarbeitet personenbezogene Daten gemäß DSGVO (EU-Verordnung 2016/679) auf der Grundlage der Einwilligung des Nutzers, der Vertragserfüllung oder gesetzlicher Verpflichtungen."
+    },
+    "data_purposes": {
+      "it": "Erogazione dei servizi e richieste di contatto online\nFunzioni amministrative, contabili e di fatturazione\nFinalità statistiche e conservazione dei registri interni\nFacoltativo: comunicazioni commerciali su servizi simili (opt-out disponibile)\nFacoltativo: materiale di marketing e contenuti promozionali (richiede consenso esplicito)",
+      "en": "Service delivery and online contact requests\nAdministrative, accounting, and billing functions\nStatistical purposes and internal record keeping\nOptional: commercial communications about similar services (opt-out available)\nOptional: marketing materials and promotional content (requires explicit consent)",
+      "de": "Dienstleistungserbringung und Online-Kontaktanfragen\nVerwaltungs-, Buchhaltungs- und Abrechnungsfunktionen\nStatistische Zwecke und interne Aufzeichnungen\nOptional: Geschäftliche Mitteilungen über ähnliche Dienste (Abmeldung möglich)\nOptional: Marketingmaterialien und Werbeinhalte (erfordert ausdrückliche Zustimmung)"
+    },
+    "data_sharing": {
+      "it": "Le informazioni possono essere comunicate a terzi, inclusi soggetti che gestiscono attività amministrative, autorità pubbliche, istituti finanziari e agenzie di recupero crediti, tutti necessari per finalità operative.",
+      "en": "Information may be shared with third parties, including entities managing administrative activities, public authorities, financial institutions, and debt collection agencies, all necessary for operational purposes.",
+      "de": "Informationen können an Dritte weitergegeben werden, einschließlich Stellen, die Verwaltungstätigkeiten verwalten, Behörden, Finanzinstitute und Inkassobüros, die alle für operative Zwecke erforderlich sind."
+    },
+    "data_storage": {
+      "it": "Le informazioni personali rimangono su server UE. L'organizzazione non trasferisce dati al di fuori dei confini dell'Unione Europea.",
+      "en": "Personal information is stored on EU servers. The organization does not transfer data outside the European Union.",
+      "de": "Persönliche Daten werden auf EU-Servern gespeichert. Die Organisation überträgt keine Daten außerhalb der Europäischen Union."
+    },
+    "retention_period": {
+      "it": "I dati persistono per tutta la durata del rapporto contrattuale e successivamente per i periodi di conformità legale, inclusi gli obblighi fiscali e i termini per la risoluzione delle controversie.",
+      "en": "Data persists for the duration of the contractual relationship and subsequently for legal compliance periods, including tax obligations and dispute resolution timeframes.",
+      "de": "Daten werden für die Dauer der Vertragsbeziehung und anschließend für gesetzliche Aufbewahrungsfristen aufbewahrt, einschließlich steuerlicher Verpflichtungen und Fristen für Streitbeilegung."
+    },
+    "user_rights": {
+      "it": "Gli interessati possono esercitare i diritti ai sensi degli articoli 15-22 del GDPR, inclusi accesso, rettifica, cancellazione, limitazione del trattamento e portabilità dei dati. I reclami possono essere presentati all'Autorità Garante per la Protezione dei Dati Personali (Piazza Venezia, 11, Roma).",
+      "en": "Data subjects may exercise rights under GDPR Articles 15-22, including access, rectification, erasure, restriction of processing, and data portability. Complaints may be filed with the Italian Data Protection Authority (Piazza Venezia, 11, Rome).",
+      "de": "Betroffene Personen können Rechte gemäß DSGVO Artikel 15-22 ausüben, einschließlich Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Datenübertragbarkeit. Beschwerden können bei der italienischen Datenschutzbehörde (Piazza Venezia, 11, Rom) eingereicht werden."
+    },
+    "cookie_title": {
+      "it": "Cookie Policy",
+      "en": "Cookie Policy",
+      "de": "Cookie-Richtlinie"
+    },
+    "cookie_types": {
+      "it": "Cookie Tecnici: Necessari per il corretto funzionamento del sito; sempre attivi a meno che le impostazioni del browser non vengano modificate.\nCookie Analitici: Google Analytics raccoglie dati di utilizzo anonimi; gli utenti possono disattivarli tramite il plugin fornito.\nAnalisi di Terze Parti: Raccolta di informazioni anonime su visite alle pagine, durata, fonti di traffico e dati demografici.\nCookie di Profilazione: Creano profili utente per pubblicità mirata.",
+      "en": "Technical Cookies: Necessary for proper site functioning; always active unless browser settings are modified.\nAnalytical Cookies: Google Analytics collects anonymous usage data; users can disable them via the provided plugin.\nThird-Party Analytics: Collection of anonymous information about page visits, duration, traffic sources, and demographics.\nProfiling Cookies: Create user profiles for targeted advertising.",
+      "de": "Technische Cookies: Notwendig für die ordnungsgemäße Funktion der Website; immer aktiv, es sei denn, die Browser-Einstellungen werden geändert.\nAnalytische Cookies: Google Analytics sammelt anonyme Nutzungsdaten; Benutzer können sie über das bereitgestellte Plugin deaktivieren.\nDrittanbieter-Analysen: Sammlung anonymer Informationen über Seitenbesuche, Verweildauer, Traffic-Quellen und demografische Daten.\nProfiling-Cookies: Erstellen Benutzerprofile für gezielte Werbung."
+    },
+    "consent_requirements": {
+      "it": "I cookie tecnici e analitici non identificativi non richiedono consenso. Tutti gli altri tipi necessitano dell'approvazione dell'utente tramite il banner del sito, le impostazioni del browser o le modifiche ai servizi di terze parti.",
+      "en": "Technical and non-identifying analytical cookies do not require consent. All other types require user approval via the site banner, browser settings, or third-party service modifications.",
+      "de": "Technische und nicht-identifizierende analytische Cookies erfordern keine Einwilligung. Alle anderen Arten erfordern die Zustimmung des Benutzers über das Website-Banner, Browser-Einstellungen oder Änderungen an Drittanbieterdiensten."
+    },
+    "cookies_listed": {
+      "it": "django_language - Cookie persistente, dominio www.gardablick.com",
+      "en": "django_language - Persistent cookie, domain www.gardablick.com",
+      "de": "django_language - Dauerhaftes Cookie, Domain www.gardablick.com"
+    },
+    "updated_at": "2026-02-05T05:40:24.927Z"
+  }
+},
+{
+  "model": "pages.homepage",
+  "pk": 1,
+  "fields": {
+    "about_subtitle": {
+      "it": "Sull' Agenzia",
+      "en": "About The Agency",
+      "de": "Über die Agentur"
+    },
+    "about_heading": {
+      "it": "REALTÀ GIOVANE CHE PUNTA SULLA QUALITÀ",
+      "en": "A YOUNG REALITY FOCUSED ON QUALITY",
+      "de": "JUNGE REALITÄT MIT FOKUS AUF QUALITÄT"
+    },
+    "about_paragraph1": {
+      "it": "L'etica, la professionalità e l'attenzione verso il cliente sono i pilastri sui quali costruiamo il nostro lavoro. Un team di professionisti giovani e appassionati, che vi seguirà in maniera costante, attenta ed efficace. Ascoltiamo le vostre esigenze e, insieme, troviamo la soluzione che più rispecchia le vostre aspettative.",
+      "en": "Ethics, professionalism and attention to the client are the pillars on which we build our work. A team of young and passionate professionals who will follow you constantly, attentively and effectively. We listen to your needs and, together, we find the solution that best reflects your expectations.",
+      "de": "Ethik, Professionalität und Aufmerksamkeit gegenüber dem Kunden sind die Säulen, auf denen wir unsere Arbeit aufbauen. Ein Team von jungen und leidenschaftlichen Fachleuten, das Sie ständig, aufmerksam und effektiv begleiten wird. Wir hören auf Ihre Bedürfnisse und finden gemeinsam die Lösung, die Ihren Erwartungen am besten entspricht."
+    },
+    "about_paragraph2": {
+      "it": "Empatia e dedizione sono le nostre qualità, che costituiscono la base per un rapporto di fiducia costante e duraturo.",
+      "en": "Empathy and dedication are our qualities, which form the basis for a constant and lasting relationship of trust.",
+      "de": "Empathie und Hingabe sind unsere Qualitäten, die die Grundlage für eine beständige und dauerhafte Vertrauensbeziehung bilden."
+    },
+    "about_image": "",
+    "services_subtitle": {
+      "it": "I Nostri Servizi",
+      "en": "Our Services",
+      "de": "Unsere Dienstleistungen"
+    },
+    "services_heading": {
+      "it": "INTERMEDIAZIONE IMMOBILIARE E NON SOLO",
+      "en": "REAL ESTATE BROKERAGE AND MORE",
+      "de": "IMMOBILIENVERMITTLUNG UND MEHR"
+    },
+    "services_paragraph1": {
+      "it": "Il nostro obiettivo è offrire un servizio di qualità che garantisca la piena soddisfazione dei clienti. In un mercato in evoluzione, ascoltiamo le vostre esigenze e vi guidiamo con professionalità in ogni fase, dalla ricerca della casa ideale alla gestione delle trattative.",
+      "en": "Our goal is to offer a quality service that guarantees complete customer satisfaction. In an evolving market, we listen to your needs and guide you with professionalism at every stage, from finding the ideal home to managing negotiations.",
+      "de": "Unser Ziel ist es, einen Qualitätsservice zu bieten, der die volle Kundenzufriedenheit garantiert. In einem sich wandelnden Markt hören wir auf Ihre Bedürfnisse und begleiten Sie professionell in jeder Phase, von der Suche nach dem idealen Zuhause bis zur Verhandlungsführung."
+    },
+    "services_paragraph2": {
+      "it": "Trasparenza, comunicazione ed empatia sono alla base del nostro lavoro: vogliamo che vi sentiate informati e supportati in ogni decisione. La nostra passione per l'immobiliare ci spinge a mantenere standard elevati e a costruire rapporti di fiducia duraturi.",
+      "en": "Transparency, communication and empathy are at the heart of our work: we want you to feel informed and supported in every decision. Our passion for real estate drives us to maintain high standards and build lasting relationships of trust.",
+      "de": "Transparenz, Kommunikation und Empathie bilden die Grundlage unserer Arbeit: Wir möchten, dass Sie sich bei jeder Entscheidung informiert und unterstützt fühlen. Unsere Leidenschaft für Immobilien treibt uns an, hohe Standards zu halten und dauerhafte Vertrauensbeziehungen aufzubauen."
+    },
+    "services_image": "",
+    "service_icon_1_title": {
+      "it": "PROPERTY HUNTING",
+      "en": "PROPERTY HUNTING",
+      "de": "PROPERTY HUNTING"
+    },
+    "service_icon_1_image": "",
+    "service_icon_2_title": {
+      "it": "VALUTAZIONI IMMOBILIARI",
+      "en": "PROPERTY VALUATIONS",
+      "de": "IMMOBILIEN-BEWERTUNGEN"
+    },
+    "service_icon_2_image": "",
+    "service_icon_3_title": {
+      "it": "SERVIZIO FOTOGRAFICO",
+      "en": "PHOTOGRAPHY SERVICE",
+      "de": "FOTOGRAFIE-SERVICE"
+    },
+    "service_icon_3_image": "",
+    "service_icon_4_title": {
+      "it": "CONSULENZE IMMOBILIARI",
+      "en": "REAL ESTATE CONSULTANCY",
+      "de": "IMMOBILIEN-BERATUNG"
+    },
+    "service_icon_4_image": "",
+    "service_icon_5_title": {
+      "it": "ASSISTENZA POST-VENDITA",
+      "en": "AFTER-SALES ASSISTANCE",
+      "de": "AFTER-SALES-BETREUUNG"
+    },
+    "service_icon_5_image": "",
+    "updated_at": "2026-02-05T06:49:27.111Z"
+  }
+},
+{
+  "model": "pages.sellpage",
+  "pk": 1,
+  "fields": {
+    "intro_subtitle": {
+      "it": "I Nostri Servizi",
+      "en": "Our Services",
+      "de": "Unsere Dienstleistungen"
+    },
+    "intro_heading": {
+      "it": "VENDI LA TUA CASA IN MODO EFFICACE E TRASPARENTE",
+      "en": "SELL YOUR HOME EFFECTIVELY AND TRANSPARENTLY",
+      "de": "VERKAUFEN SIE IHR HAUS EFFEKTIV UND TRANSPARENT"
+    },
+    "intro_description": {
+      "it": "Ogni immobile ha una storia unica. Il nostro compito è valorizzarla al massimo. Analizziamo ogni dettaglio della tua proprietà e ti forniamo una valutazione precisa e personalizzata, completamente gratuita e senza alcun impegno. Da qui parte un percorso chiaro, guidato e costruito su misura per te.",
+      "en": "Every property has a unique story. Our job is to maximize its value. We analyze every detail of your property and provide you with a precise and personalized valuation, completely free and without any obligation. From here starts a clear, guided path built just for you.",
+      "de": "Jede Immobilie hat eine einzigartige Geschichte. Unsere Aufgabe ist es, ihren Wert zu maximieren. Wir analysieren jedes Detail Ihrer Immobilie und bieten Ihnen eine präzise und personalisierte Bewertung, völlig kostenlos und unverbindlich. Von hier aus beginnt ein klarer, geführter Weg, der speziell für Sie gestaltet wurde."
+    },
+    "intro_image": "",
+    "service_1_title": {
+      "it": "ANALISI SU MISURA",
+      "en": "TAILORED ANALYSIS",
+      "de": "MASSGESCHNEIDERTE ANALYSE"
+    },
+    "service_1_description": {
+      "it": "Valutiamo la tua proprietà con un'analisi approfondita del mercato locale, delle caratteristiche dell'immobile e delle tendenze attuali per determinare il prezzo ottimale di vendita.",
+      "en": "We evaluate your property with an in-depth analysis of the local market, property characteristics and current trends to determine the optimal selling price.",
+      "de": "Wir bewerten Ihre Immobilie mit einer eingehenden Analyse des lokalen Marktes, der Immobilieneigenschaften und aktueller Trends, um den optimalen Verkaufspreis zu bestimmen."
+    },
+    "service_1_icon": "",
+    "service_2_title": {
+      "it": "STRATEGIA DI VENDITA PERSONALIZZATA",
+      "en": "PERSONALIZED SALES STRATEGY",
+      "de": "PERSONALISIERTE VERKAUFSSTRATEGIE"
+    },
+    "service_2_description": {
+      "it": "Sviluppiamo una strategia di vendita su misura per la tua proprietà, considerando le tue esigenze e gli obiettivi di vendita per massimizzare i risultati.",
+      "en": "We develop a tailor-made sales strategy for your property, considering your needs and sales objectives to maximize results.",
+      "de": "Wir entwickeln eine maßgeschneiderte Verkaufsstrategie für Ihre Immobilie, unter Berücksichtigung Ihrer Bedürfnisse und Verkaufsziele, um die Ergebnisse zu maximieren."
+    },
+    "service_2_icon": "",
+    "service_3_title": {
+      "it": "PRESENTAZIONE PROFESSIONALE",
+      "en": "PROFESSIONAL PRESENTATION",
+      "de": "PROFESSIONELLE PRÄSENTATION"
+    },
+    "service_3_description": {
+      "it": "Creiamo materiali promozionali di alta qualità, inclusi servizi fotografici professionali, video tour e descrizioni dettagliate per valorizzare la tua proprietà.",
+      "en": "We create high-quality promotional materials, including professional photography, video tours and detailed descriptions to enhance your property.",
+      "de": "Wir erstellen hochwertige Werbematerialien, einschließlich professioneller Fotografie, Video-Touren und detaillierter Beschreibungen, um Ihre Immobilie zu präsentieren."
+    },
+    "service_3_icon": "",
+    "service_4_title": {
+      "it": "GESTIONE DEI CONTATTI E DELLE VISITE",
+      "en": "CONTACT AND VISIT MANAGEMENT",
+      "de": "KONTAKT- UND BESICHTIGUNGSMANAGEMENT"
+    },
+    "service_4_description": {
+      "it": "Gestiamo tutti i contatti dei potenziali acquirenti, organizziamo le visite guidate e ti teniamo aggiornato su ogni interesse manifestato per la tua proprietà.",
+      "en": "We manage all potential buyer contacts, organize guided tours and keep you updated on every interest shown in your property.",
+      "de": "Wir verwalten alle Kontakte potenzieller Käufer, organisieren geführte Besichtigungen und halten Sie über jedes Interesse an Ihrer Immobilie auf dem Laufenden."
+    },
+    "service_4_icon": "",
+    "service_5_title": {
+      "it": "VENDITA SICURA E GESTIONE COMPLETA",
+      "en": "SECURE SALE AND COMPLETE MANAGEMENT",
+      "de": "SICHERER VERKAUF UND KOMPLETTE VERWALTUNG"
+    },
+    "service_5_description": {
+      "it": "Ti accompagniamo fino alla firma dell'atto notarile, gestendo tutta la documentazione necessaria e garantendo una vendita sicura e trasparente.",
+      "en": "We accompany you until the signing of the notarial deed, managing all necessary documentation and guaranteeing a safe and transparent sale.",
+      "de": "Wir begleiten Sie bis zur Unterzeichnung der notariellen Urkunde, verwalten alle erforderlichen Dokumente und garantieren einen sicheren und transparenten Verkauf."
+    },
+    "service_5_icon": "",
+    "updated_at": "2026-02-05T06:49:27.112Z"
+  }
+},
+{
+  "model": "pages.servicepage",
+  "pk": 1,
+  "fields": {
+    "service_1_title": {
+      "it": "PROPERTY HUNTING",
+      "en": "PROPERTY HUNTING",
+      "de": "PROPERTY HUNTING"
+    },
+    "service_1_description": {
+      "it": "Il nostro obiettivo è offrire un servizio di qualità che garantisca la piena soddisfazione dei clienti. In un mercato in evoluzione, ascoltiamo le vostre esigenze e vi guidiamo con professionalità in ogni fase, dalla ricerca della casa ideale alla gestione delle trattative.",
+      "en": "Our goal is to offer a quality service that guarantees complete customer satisfaction. In an evolving market, we listen to your needs and guide you with professionalism at every stage, from finding the ideal home to managing negotiations.",
+      "de": "Unser Ziel ist es, einen Qualitätsservice zu bieten, der die volle Kundenzufriedenheit garantiert. In einem sich wandelnden Markt hören wir auf Ihre Bedürfnisse und begleiten Sie professionell in jeder Phase, von der Suche nach dem idealen Zuhause bis zur Verhandlungsführung."
+    },
+    "service_1_icon": "",
+    "service_1_image": "",
+    "service_2_title": {
+      "it": "VALUTAZIONI IMMOBILIARI",
+      "en": "PROPERTY VALUATIONS",
+      "de": "IMMOBILIENBEWERTUNGEN"
+    },
+    "service_2_description": {
+      "it": "Offriamo valutazioni immobiliari accurate e professionali per aiutarti a determinare il valore reale della tua proprietà. Il nostro team di esperti analizza il mercato locale, le caratteristiche dell'immobile e le tendenze attuali per fornirti una stima precisa e affidabile.",
+      "en": "We offer accurate and professional property valuations to help you determine the real value of your property. Our team of experts analyzes the local market, property characteristics and current trends to provide you with a precise and reliable estimate.",
+      "de": "Wir bieten genaue und professionelle Immobilienbewertungen, um Ihnen zu helfen, den wahren Wert Ihrer Immobilie zu bestimmen. Unser Expertenteam analysiert den lokalen Markt, die Immobilieneigenschaften und aktuelle Trends, um Ihnen eine präzise und zuverlässige Schätzung zu liefern."
+    },
+    "service_2_icon": "",
+    "service_2_image": "",
+    "service_3_title": {
+      "it": "SERVIZIO FOTOGRAFICO",
+      "en": "PHOTOGRAPHY SERVICE",
+      "de": "FOTOGRAFIE-SERVICE"
+    },
+    "service_3_description": {
+      "it": "Un servizio fotografico professionale è essenziale per valorizzare la tua proprietà. I nostri fotografi esperti catturano ogni dettaglio e angolo della casa, creando immagini di alta qualità che mettono in risalto le caratteristiche uniche dell'immobile e attirano potenziali acquirenti.",
+      "en": "A professional photography service is essential to enhance your property. Our expert photographers capture every detail and angle of the home, creating high-quality images that highlight the unique features of the property and attract potential buyers.",
+      "de": "Ein professioneller Fotografie-Service ist unerlässlich, um Ihre Immobilie zu präsentieren. Unsere erfahrenen Fotografen erfassen jedes Detail und jeden Winkel des Hauses und erstellen hochwertige Bilder, die die einzigartigen Merkmale der Immobilie hervorheben und potenzielle Käufer anziehen."
+    },
+    "service_3_icon": "",
+    "service_3_image": "",
+    "service_4_title": {
+      "it": "CONSULENZE IMMOBILIARI",
+      "en": "REAL ESTATE CONSULTANCY",
+      "de": "IMMOBILIENBERATUNG"
+    },
+    "service_4_description": {
+      "it": "Dall'incontro iniziale all'atto notarile, ti accompagniamo in ogni fase del processo immobiliare. Offriamo consulenze complete in italiano, inglese e tedesco, garantendo supporto professionale e trasparente per clienti internazionali e locali.",
+      "en": "From the initial meeting to the notarial deed, we accompany you at every stage of the real estate process. We offer comprehensive consultations in Italian, English and German, guaranteeing professional and transparent support for international and local clients.",
+      "de": "Vom ersten Treffen bis zur notariellen Urkunde begleiten wir Sie in jeder Phase des Immobilienprozesses. Wir bieten umfassende Beratung in Italienisch, Englisch und Deutsch und garantieren professionelle und transparente Unterstützung für internationale und lokale Kunden."
+    },
+    "service_4_icon": "",
+    "service_4_image": "",
+    "service_5_title": {
+      "it": "ASSISTENZA POST-VENDITA",
+      "en": "AFTER-SALES ASSISTANCE",
+      "de": "AFTER-SALES-BETREUUNG"
+    },
+    "service_5_description": {
+      "it": "Il nostro impegno non termina con la vendita. Offriamo assistenza post-vendita completa, inclusa la gestione del trasloco, la manutenzione e il controllo della nuova casa. Siamo sempre disponibili per supportarti anche dopo la conclusione dell'affare.",
+      "en": "Our commitment does not end with the sale. We offer complete after-sales assistance, including moving management, maintenance and inspection of the new home. We are always available to support you even after the deal is concluded.",
+      "de": "Unser Engagement endet nicht mit dem Verkauf. Wir bieten eine umfassende After-Sales-Betreuung, einschließlich Umzugsmanagement, Wartung und Inspektion des neuen Hauses. Wir stehen Ihnen auch nach Abschluss des Geschäfts jederzeit zur Verfügung."
+    },
+    "service_5_icon": "",
+    "service_5_image": "",
+    "updated_at": "2026-02-05T06:49:27.113Z"
+  }
+},
+{
+  "model": "pages.aboutpage",
+  "pk": 1,
+  "fields": {
+    "agency_subtitle": {
+      "it": "Sull' Agenzia",
+      "en": "About The Agency",
+      "de": "Über die Agentur"
+    },
+    "agency_heading": {
+      "it": "REALTÀ GIOVANE CHE PUNTA SULLA QUALITÀ",
+      "en": "A YOUNG REALITY FOCUSED ON QUALITY",
+      "de": "JUNGE REALITÄT MIT FOKUS AUF QUALITÄT"
+    },
+    "agency_paragraph1": {
+      "it": "L'etica, la professionalità e l'attenzione verso il cliente sono i pilastri sui quali costruiamo il nostro lavoro. Un team di professionisti giovani e appassionati, che vi seguirà in maniera costante, attenta ed efficace. Ascoltiamo le vostre esigenze e, insieme, troviamo la soluzione che più rispecchia le vostre aspettative.",
+      "en": "Ethics, professionalism and attention to the client are the pillars on which we build our work. A team of young and passionate professionals who will follow you constantly, attentively and effectively. We listen to your needs and, together, we find the solution that best reflects your expectations.",
+      "de": "Ethik, Professionalität und Aufmerksamkeit gegenüber dem Kunden sind die Säulen, auf denen wir unsere Arbeit aufbauen. Ein Team von jungen und leidenschaftlichen Fachleuten, das Sie ständig, aufmerksam und effektiv begleiten wird. Wir hören auf Ihre Bedürfnisse und finden gemeinsam die Lösung, die Ihren Erwartungen am besten entspricht."
+    },
+    "agency_paragraph2": {
+      "it": "Empatia e dedizione sono le nostre qualità, che costituiscono la base per un rapporto di fiducia costante e duraturo.",
+      "en": "Empathy and dedication are our qualities, which form the basis for a constant and lasting relationship of trust.",
+      "de": "Empathie und Hingabe sind unsere Qualitäten, die die Grundlage für eine beständige und dauerhafte Vertrauensbeziehung bilden."
+    },
+    "agency_image": "",
+    "team_member_1_name": "Andrea Cristini",
+    "team_member_1_title": {
+      "it": "CONSULENTE IMMOBILIARE",
+      "en": "REAL ESTATE CONSULTANT",
+      "de": "IMMOBILIENBERATER"
+    },
+    "team_member_1_image": "",
+    "team_member_2_name": "Nadia Zanelli",
+    "team_member_2_title": {
+      "it": "INTERNATIONAL REAL ESTATE ADVISOR",
+      "en": "INTERNATIONAL REAL ESTATE ADVISOR",
+      "de": "INTERNATIONALER IMMOBILIENBERATER"
+    },
+    "team_member_2_image": "",
+    "updated_at": "2026-02-05T06:49:27.114Z"
+  }
+},
+{
+  "model": "pages.contactpage",
+  "pk": 1,
+  "fields": {
+    "company_name": "GARDABLICK",
+    "description": {
+      "it": "",
+      "en": "",
+      "de": ""
+    },
+    "address_building": "Palazzo Morgante",
+    "address_street": "Piazza Sergio Bresciani, 3",
+    "address_city": "25087 - Salò (BS)",
+    "phone_1": "+39 0365 1780596",
+    "phone_2": "+39 388 1412669",
+    "email": "info@gardablick.com",
+    "whatsapp_number": "393881412669",
+    "map_embed_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2798.5!2d10.526!3d45.608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4781c5e8b8c8c8c9%3A0x8c8c8c8c8c8c8c8c!2sPiazza%20Sergio%20Bresciani%2C%203%2C%2025087%20Sal%C3%B2%20BS%2C%20Italy!5e0!3m2!1sen!2sus!4v1234567890",
+    "social_whatsapp": "",
+    "social_instagram": "",
+    "social_facebook": "",
+    "social_linkedin": "",
+    "updated_at": "2026-02-05T06:48:21.440Z"
+  }
+}
+]

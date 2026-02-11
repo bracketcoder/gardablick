@@ -1,0 +1,63 @@
+{% load i18n static %}
+<header id="gb-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 {% block header_style %}bg-transparent{% endblock %}">
+    <div class="max-w-[1280px] mx-auto px-4 md:px-[30px] h-[80px] md:h-[100px] flex items-center justify-between">
+        <!-- Logo -->
+        <a class="flex items-center" href="{% url 'home' %}">
+            <div class="relative w-[200px] md:w-[250px] h-[60px] md:h-[80px]">
+                <img id="header-logo-white" alt="Gardablick Logo" class="object-contain header-logo" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/full-logo-white.png' %}"/>
+                <img id="header-logo-black" alt="Gardablick Logo" class="object-contain header-logo" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent;display:none" src="{% static 'gardablick/images/full-logo-black.png' %}"/>
+            </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-8">
+            <a class="nav-link text-white uppercase text-[16px] font-medium tracking-[-0.08px] transition-opacity {% if request.path == '/' %}underline underline-offset-4{% else %}opacity-70 hover:opacity-100{% endif %}" href="{% url 'home' %}"><span data-i18n="nav.home">{% trans "Home" %}</span></a>
+            <a class="nav-link text-white uppercase text-[16px] font-medium tracking-[-0.08px] transition-opacity {% if '/immobili' in request.path %}underline underline-offset-4{% else %}opacity-70 hover:opacity-100{% endif %}" href="{% url 'immobili' %}"><span data-i18n="nav.buy">{% trans "Buy" %}</span></a>
+            <a class="nav-link text-white uppercase text-[16px] font-medium tracking-[-0.08px] transition-opacity {% if '/vendi' in request.path %}underline underline-offset-4{% else %}opacity-70 hover:opacity-100{% endif %}" href="{% url 'vendi' %}"><span data-i18n="nav.sell">{% trans "Sell" %}</span></a>
+            <a class="nav-link text-white uppercase text-[16px] font-medium tracking-[-0.08px] transition-opacity {% if '/servizi' in request.path %}underline underline-offset-4{% else %}opacity-70 hover:opacity-100{% endif %}" href="{% url 'servizi' %}"><span data-i18n="nav.services">{% trans "Services" %}</span></a>
+            <a class="nav-link text-white uppercase text-[16px] font-medium tracking-[-0.08px] transition-opacity {% if '/chi-siamo' in request.path %}underline underline-offset-4{% else %}opacity-70 hover:opacity-100{% endif %}" href="{% url 'chi-siamo' %}"><span data-i18n="nav.about">{% trans "About" %}</span></a>
+            <a class="nav-link text-white uppercase text-[16px] font-medium tracking-[-0.08px] transition-opacity {% if '/contatti' in request.path %}underline underline-offset-4{% else %}opacity-70 hover:opacity-100{% endif %}" href="{% url 'contatti' %}"><span data-i18n="nav.contact">{% trans "Contact" %}</span></a>
+
+            <!-- Language Switcher -->
+            <div class="flex items-center gap-2 ml-4">
+                <span data-lang="it" class="lang-link text-white uppercase text-[16px] font-medium tracking-[-0.08px] cursor-pointer">IT</span>
+                <span class="lang-divider w-px h-4 bg-white/30"></span>
+                <span data-lang="en" class="lang-link text-white/70 uppercase text-[16px] font-extralight tracking-[-0.08px] cursor-pointer hover:opacity-80">EN</span>
+                <span class="lang-divider w-px h-4 bg-white/30"></span>
+                <span data-lang="de" class="lang-link text-white/70 uppercase text-[16px] font-extralight tracking-[-0.08px] cursor-pointer hover:opacity-80">DE</span>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-white focus:outline-none focus:ring-2 focus:ring-white/50 rounded-md transition-all duration-300" aria-label="Toggle menu" aria-expanded="false">
+            <div class="w-6 h-6 flex flex-col justify-center items-center gap-1.5">
+                <span class="block h-0.5 w-6 bg-white transition-all duration-300 hamburger-line"></span>
+                <span class="block h-0.5 w-6 bg-white transition-all duration-300 hamburger-line"></span>
+                <span class="block h-0.5 w-6 bg-white transition-all duration-300 hamburger-line"></span>
+            </div>
+        </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="lg:hidden fixed inset-0 top-[80px] md:top-[100px] bg-white z-40 transform transition-transform duration-300 ease-in-out translate-x-full">
+        <nav class="flex flex-col h-full overflow-y-auto">
+            <div class="px-4 py-6 space-y-1">
+                <a class="block py-3 px-4 text-[#02033b] uppercase text-[18px] font-medium hover:bg-[#02033b]/5 rounded-lg transition-colors {% if request.path == '/' %}bg-[#02033b]/5 underline underline-offset-4{% endif %}" href="{% url 'home' %}"><span data-i18n="nav.home">{% trans "Home" %}</span></a>
+                <a class="block py-3 px-4 text-[#02033b] uppercase text-[18px] font-medium hover:bg-[#02033b]/5 rounded-lg transition-colors {% if '/immobili' in request.path %}bg-[#02033b]/5 underline underline-offset-4{% endif %}" href="{% url 'immobili' %}"><span data-i18n="nav.buy">{% trans "Buy" %}</span></a>
+                <a class="block py-3 px-4 text-[#02033b] uppercase text-[18px] font-medium hover:bg-[#02033b]/5 rounded-lg transition-colors {% if '/vendi' in request.path %}bg-[#02033b]/5 underline underline-offset-4{% endif %}" href="{% url 'vendi' %}"><span data-i18n="nav.sell">{% trans "Sell" %}</span></a>
+                <a class="block py-3 px-4 text-[#02033b] uppercase text-[18px] font-medium hover:bg-[#02033b]/5 rounded-lg transition-colors {% if '/servizi' in request.path %}bg-[#02033b]/5 underline underline-offset-4{% endif %}" href="{% url 'servizi' %}"><span data-i18n="nav.services">{% trans "Services" %}</span></a>
+                <a class="block py-3 px-4 text-[#02033b] uppercase text-[18px] font-medium hover:bg-[#02033b]/5 rounded-lg transition-colors {% if '/chi-siamo' in request.path %}bg-[#02033b]/5 underline underline-offset-4{% endif %}" href="{% url 'chi-siamo' %}"><span data-i18n="nav.about">{% trans "About" %}</span></a>
+                <a class="block py-3 px-4 text-[#02033b] uppercase text-[18px] font-medium hover:bg-[#02033b]/5 rounded-lg transition-colors {% if '/contatti' in request.path %}bg-[#02033b]/5 underline underline-offset-4{% endif %}" href="{% url 'contatti' %}"><span data-i18n="nav.contact">{% trans "Contact" %}</span></a>
+            </div>
+            <div class="px-4 py-6 border-t border-[#02033b]/10">
+                <div class="flex items-center justify-center gap-4">
+                    <span data-lang="it" class="text-[#02033b] uppercase text-[18px] font-medium cursor-pointer">IT</span>
+                    <span class="w-px h-6 bg-[#02033b]/30"></span>
+                    <span data-lang="en" class="text-[#02033b]/70 uppercase text-[18px] font-extralight cursor-pointer hover:opacity-80">EN</span>
+                    <span class="w-px h-6 bg-[#02033b]/30"></span>
+                    <span data-lang="de" class="text-[#02033b]/70 uppercase text-[18px] font-extralight cursor-pointer hover:opacity-80">DE</span>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>

@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Servizi" %}{% endblock %}
+
+{% block content %}
+<!-- ============ HERO SECTION ============ -->
+<section class="relative h-[500px] md:h-[600px] w-full overflow-hidden">
+    <div class="absolute inset-0">
+        <img alt="Lake Garda" class="object-cover" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/121330fdc05a41c4db3d2a6db77c0b62ac331b84.png' %}"/>
+        <div class="absolute inset-0 bg-[#02033b] opacity-40"></div>
+    </div>
+
+    <div class="relative z-10 h-full flex flex-col items-start justify-center max-w-[1280px] mx-auto px-4 md:px-[30px]">
+        <h1 class="text-white uppercase text-[32px] md:text-[48px] lg:text-[56px] font-medium tracking-[-0.1354px] leading-[1.2] max-w-[800px]">
+            <span data-i18n="services.heroTitle1">{% trans "I nostri servizi" %}</span><br/><span data-i18n="services.heroTitle2">{% trans "per voi" %}</span>
+        </h1>
+    </div>
+</section>
+
+<!-- ============ SERVICES DETAIL SECTION ============ -->
+<section class="bg-white py-16 md:py-24 px-4 md:px-[30px]">
+    <div class="max-w-[1280px] mx-auto">
+
+        <!-- Service 1: Property Hunting -->
+        <div class="mb-16 md:mb-24 last:mb-0 rounded-[14px] p-6 md:p-8" style="background-color:#FAFAFA">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="mb-6 flex items-center gap-3 md:gap-4">
+                        <div class="relative w-[50px] h-[50px] md:w-[60px] md:h-[60px] flex-shrink-0">
+                            <img alt="Property Hunting icon" loading="lazy" width="50" height="50" class="object-contain w-full h-full" style="color:transparent" src="{% static 'gardablick/images/service/icon/Property hunting-icon.png' %}"/>
+                        </div>
+                        <h2 class="text-[#02033b] uppercase text-[24px] md:text-[32px] font-medium tracking-[-0.1466px]" data-i18n="services.propertyHunting">{% trans "Property Hunting" %}</h2>
+                    </div>
+                    <p class="text-[#727272] text-[16px] font-normal leading-[1.6] tracking-[-0.1712px] mb-6" data-i18n="services.propertyHuntingDesc">{% trans "Cerchi la propriet&agrave; perfetta sul Lago di Garda? Il nostro servizio di Property Hunting ti offre una ricerca personalizzata e mirata, accompagnandoti passo dopo passo fino a trovare la casa dei tuoi sogni." %}</p>
+                    <a class="inline-flex items-center gap-2 text-[#02033b] text-[16px] font-medium hover:opacity-80 transition-opacity" href="{% url 'contatti' %}">
+                        <span data-i18n="services.contactUs">{% trans "Contattaci" %}</span>
+                        <img alt="" loading="lazy" width="9" height="5" class="rotate-[-90deg]" style="color:transparent" src="{% static 'gardablick/images/312183a2cf6164b0db97392c348dbdc6033badac.svg' %}"/>
+                    </a>
+                </div>
+                <div class="relative h-[300px] md:h-[400px] w-full rounded-[14px] overflow-hidden shadow-lg order-1 lg:order-2">
+                    <img alt="Property hunting service" loading="lazy" class="object-cover" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/service/Property hunting.png' %}"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 2: Valutazioni Immobiliari -->
+        <div class="mb-16 md:mb-24 last:mb-0 rounded-[14px] p-6 md:p-8" style="background-color:#FAFAFA">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="mb-6 flex items-center gap-3 md:gap-4">
+                        <div class="relative w-[50px] h-[50px] md:w-[60px] md:h-[60px] flex-shrink-0">
+                            <img alt="Valutazioni Immobiliari icon" loading="lazy" width="50" height="50" class="object-contain w-full h-full" style="color:transparent" src="{% static 'gardablick/images/service/icon/Valutazioni Immobiliari-icon.png' %}"/>
+                        </div>
+                        <h2 class="text-[#02033b] uppercase text-[24px] md:text-[32px] font-medium tracking-[-0.1466px]" data-i18n="services.propertyValuations">{% trans "Valutazioni Immobiliari" %}</h2>
+                    </div>
+                    <p class="text-[#727272] text-[16px] font-normal leading-[1.6] tracking-[-0.1712px] mb-6" data-i18n="services.propertyValuationsDesc">{% trans "Offriamo valutazioni immobiliari accurate e professionali basate su un'analisi approfondita del mercato locale. Conosci il vero valore della tua propriet&agrave; con il supporto dei nostri esperti." %}</p>
+                    <a class="inline-flex items-center gap-2 text-[#02033b] text-[16px] font-medium hover:opacity-80 transition-opacity" href="{% url 'contatti' %}">
+                        <span data-i18n="services.contactUs">{% trans "Contattaci" %}</span>
+                        <img alt="" loading="lazy" width="9" height="5" class="rotate-[-90deg]" style="color:transparent" src="{% static 'gardablick/images/312183a2cf6164b0db97392c348dbdc6033badac.svg' %}"/>
+                    </a>
+                </div>
+                <div class="relative h-[300px] md:h-[400px] w-full rounded-[14px] overflow-hidden shadow-lg order-1 lg:order-2">
+                    <img alt="Valutazioni Immobiliari" loading="lazy" class="object-cover" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/service/Valutazioni Immobiliari.png' %}"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 3: Servizio Fotografico -->
+        <div class="mb-16 md:mb-24 last:mb-0 rounded-[14px] p-6 md:p-8" style="background-color:#FAFAFA">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="mb-6 flex items-center gap-3 md:gap-4">
+                        <div class="relative w-[50px] h-[50px] md:w-[60px] md:h-[60px] flex-shrink-0">
+                            <img alt="Servizio fotografico icon" loading="lazy" width="50" height="50" class="object-contain w-full h-full" style="color:transparent" src="{% static 'gardablick/images/service/icon/Servizio fotografico icon.png' %}"/>
+                        </div>
+                        <h2 class="text-[#02033b] uppercase text-[24px] md:text-[32px] font-medium tracking-[-0.1466px]" data-i18n="services.photographyService">{% trans "Servizio Fotografico" %}</h2>
+                    </div>
+                    <p class="text-[#727272] text-[16px] font-normal leading-[1.6] tracking-[-0.1712px] mb-6" data-i18n="services.photographyServiceDesc">{% trans "Valorizziamo la tua propriet&agrave; con un servizio fotografico professionale. Immagini di alta qualit&agrave; che catturano ogni dettaglio e mettono in risalto i punti di forza del tuo immobile." %}</p>
+                    <a class="inline-flex items-center gap-2 text-[#02033b] text-[16px] font-medium hover:opacity-80 transition-opacity" href="{% url 'contatti' %}">
+                        <span data-i18n="services.contactUs">{% trans "Contattaci" %}</span>
+                        <img alt="" loading="lazy" width="9" height="5" class="rotate-[-90deg]" style="color:transparent" src="{% static 'gardablick/images/312183a2cf6164b0db97392c348dbdc6033badac.svg' %}"/>
+                    </a>
+                </div>
+                <div class="relative h-[300px] md:h-[400px] w-full rounded-[14px] overflow-hidden shadow-lg order-1 lg:order-2">
+                    <img alt="Servizio fotografico professionale" loading="lazy" class="object-cover" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/service/Servizio fotografico.png' %}"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 4: Consulenze Immobiliari -->
+        <div class="mb-16 md:mb-24 last:mb-0 rounded-[14px] p-6 md:p-8" style="background-color:#FAFAFA">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="mb-6 flex items-center gap-3 md:gap-4">
+                        <div class="relative w-[50px] h-[50px] md:w-[60px] md:h-[60px] flex-shrink-0">
+                            <img alt="Consulenze immobiliari icon" loading="lazy" width="50" height="50" class="object-contain w-full h-full" style="color:transparent" src="{% static 'gardablick/images/service/icon/consulenze immobiliari icon.png' %}"/>
+                        </div>
+                        <h2 class="text-[#02033b] uppercase text-[24px] md:text-[32px] font-medium tracking-[-0.1466px]" data-i18n="services.realEstateConsultancy">{% trans "Consulenze Immobiliari" %}</h2>
+                    </div>
+                    <p class="text-[#727272] text-[16px] font-normal leading-[1.6] tracking-[-0.1712px] mb-6" data-i18n="services.realEstateConsultancyDesc">{% trans "Il nostro team di esperti ti offre consulenze immobiliari personalizzate per guidarti nelle decisioni pi&ugrave; importanti. Dalla compravendita alla gestione patrimoniale, siamo al tuo fianco." %}</p>
+                    <a class="inline-flex items-center gap-2 text-[#02033b] text-[16px] font-medium hover:opacity-80 transition-opacity" href="{% url 'contatti' %}">
+                        <span data-i18n="services.contactUs">{% trans "Contattaci" %}</span>
+                        <img alt="" loading="lazy" width="9" height="5" class="rotate-[-90deg]" style="color:transparent" src="{% static 'gardablick/images/312183a2cf6164b0db97392c348dbdc6033badac.svg' %}"/>
+                    </a>
+                </div>
+                <div class="relative h-[300px] md:h-[400px] w-full rounded-[14px] overflow-hidden shadow-lg order-1 lg:order-2">
+                    <img alt="Consulenze immobiliari" loading="lazy" class="object-cover" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/service/consulenze immobiliari.png' %}"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 5: Assistenza Post-Vendita -->
+        <div class="mb-16 md:mb-24 last:mb-0 rounded-[14px] p-6 md:p-8" style="background-color:#FAFAFA">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="mb-6 flex items-center gap-3 md:gap-4">
+                        <div class="relative w-[50px] h-[50px] md:w-[60px] md:h-[60px] flex-shrink-0">
+                            <img alt="Assistenza post-vendita icon" loading="lazy" width="50" height="50" class="object-contain w-full h-full" style="color:transparent" src="{% static 'gardablick/images/service/icon/Assistenza  post-vendita icon.png' %}"/>
+                        </div>
+                        <h2 class="text-[#02033b] uppercase text-[24px] md:text-[32px] font-medium tracking-[-0.1466px]" data-i18n="services.afterSalesAssistance">{% trans "Assistenza Post-Vendita" %}</h2>
+                    </div>
+                    <p class="text-[#727272] text-[16px] font-normal leading-[1.6] tracking-[-0.1712px] mb-6" data-i18n="services.afterSalesAssistanceDesc">{% trans "Il nostro impegno non si ferma alla vendita. Offriamo assistenza completa post-vendita per garantire una transizione serena e senza pensieri nella tua nuova propriet&agrave;." %}</p>
+                    <a class="inline-flex items-center gap-2 text-[#02033b] text-[16px] font-medium hover:opacity-80 transition-opacity" href="{% url 'contatti' %}">
+                        <span data-i18n="services.contactUs">{% trans "Contattaci" %}</span>
+                        <img alt="" loading="lazy" width="9" height="5" class="rotate-[-90deg]" style="color:transparent" src="{% static 'gardablick/images/312183a2cf6164b0db97392c348dbdc6033badac.svg' %}"/>
+                    </a>
+                </div>
+                <div class="relative h-[300px] md:h-[400px] w-full rounded-[14px] overflow-hidden shadow-lg order-1 lg:order-2">
+                    <img alt="Assistenza post-vendita" loading="lazy" class="object-cover" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/service/Assistenza  post-vendita.png' %}"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="mt-16 md:mt-24 flex justify-center">
+            <a class="bg-[#02033b] text-white px-8 md:px-12 py-4 md:py-5 rounded-[8px] font-medium text-[16px] md:text-[18px] uppercase tracking-[-0.08px] hover:opacity-90 transition-opacity inline-flex items-center gap-3" href="{% url 'immobili' %}">
+                <span data-i18n="services.discoverAll">{% trans "Scopri tutti gli immobili" %}</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 6H11M11 6L6 1M11 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

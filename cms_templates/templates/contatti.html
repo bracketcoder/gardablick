@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Contatti" %}{% endblock %}
+
+{% block content %}
+<!-- ============ HERO SECTION ============ -->
+<section class="relative w-full h-[500px] md:h-[600px] lg:h-[700px]">
+    <!-- Background Image -->
+    <div class="absolute inset-0 w-full h-full">
+        <img alt="Lake Garda" class="object-cover" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/about/hero2.png' %}"/>
+    </div>
+
+    <!-- Overlay Gradient -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#02033b]/70 via-[#02033b]/50 to-transparent"></div>
+
+    <!-- Overlay Text -->
+    <div class="relative z-10 h-full flex items-center px-4 md:px-[30px] lg:px-[60px]">
+        <div class="max-w-[1280px] mx-auto w-full">
+            <h1 class="text-white text-[32px] md:text-[48px] lg:text-[64px] font-semibold leading-[1.2] max-w-[600px] md:max-w-[700px]">
+                <span data-i18n="contact.heroTitle1">{% trans "Contattaci per il tuo" %}</span><br/><span data-i18n="contact.heroTitle2">{% trans "immobile sul Lago di Garda" %}</span>
+            </h1>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CONTACT INFO SECTION ============ -->
+<section class="bg-white py-16 px-4 md:px-[30px]">
+    <div class="max-w-[1280px] mx-auto">
+        <!-- Header Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <!-- Left: Text Content -->
+            <div>
+                <p class="text-[#6B7280] text-[14px] md:text-[16px] font-light mb-2" data-i18n="contact.contactUs">{% trans "Contattaci" %}</p>
+                <h2 class="text-[#02033b] text-[32px] md:text-[48px] font-bold mb-6" data-i18n="contact.heading">GARDABLICK</h2>
+                <p class="text-[#374151] text-[16px] md:text-[18px] leading-relaxed" data-i18n="contact.description">
+                    {% trans "Siamo a vostra disposizione per qualsiasi informazione riguardante i nostri servizi immobiliari sul Lago di Garda. Non esitate a contattarci per una consulenza personalizzata." %}
+                </p>
+            </div>
+
+            <!-- Right: Action Buttons -->
+            <div class="flex flex-col gap-4 justify-start">
+                <a href="https://wa.me/393881412669" target="_blank" rel="noopener noreferrer" class="bg-[#02033b] text-white px-6 py-4 rounded-[8px] font-medium text-[16px] hover:opacity-90 transition-opacity inline-flex items-center gap-3 w-full md:w-auto justify-center md:justify-start">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" fill="currentColor"></path>
+                    </svg>
+                    Whatsapp
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-auto">
+                        <path d="M1 6H11M11 6L6 1M11 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </a>
+                <a href="mailto:info@gardablick.com" class="bg-[#02033b] text-white px-6 py-4 rounded-[8px] font-medium text-[16px] hover:opacity-90 transition-opacity inline-flex items-center gap-3 w-full md:w-auto justify-center md:justify-start">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"></path>
+                    </svg>
+                    Mail
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-auto">
+                        <path d="M1 6H11M11 6L6 1M11 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Address & Map Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Address Card -->
+            <div class="bg-white border border-[#E5E7EB] rounded-[12px] p-6 md:p-8 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 2C11.58 2 8 5.58 8 10C8 16 16 28 16 28C16 28 24 16 24 10C24 5.58 20.42 2 16 2ZM16 13C14.34 13 13 11.66 13 10C13 8.34 14.34 7 16 7C17.66 7 19 8.34 19 10C19 11.66 17.66 13 16 13Z" fill="#02033b"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-[#6B7280] text-[14px] font-light mb-1">Palazzo Morgante</p>
+                        <p class="text-[#02033b] text-[18px] md:text-[20px] font-bold mb-1">Piazza Sergio Bresciani, 3</p>
+                        <p class="text-[#02033b] text-[18px] md:text-[20px] font-bold">25087 - Sal&ograve; (BS)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Embed -->
+            <div class="bg-white border border-[#E5E7EB] rounded-[12px] overflow-hidden shadow-sm h-[300px] md:h-[350px]">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2798.5!2d10.526!3d45.608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4781c5e8b8c8c8c9%3A0x8c8c8c8c8c8c8c8c!2sPiazza%20Sergio%20Bresciani%2C%203%2C%2025087%20Sal%C3%B2%20BS%2C%20Italy!5e0!3m2!1sen!2sus!4v1234567890" width="100%" height="100%" style="border:0" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Gardablick Location"></iframe>
+            </div>
+        </div>
+
+        <!-- Phone & Email Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Phone Card -->
+            <div class="bg-white border border-[#E5E7EB] rounded-[12px] p-6 md:p-8 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.37 18.7l-4.53-1.96a1 1 0 0 0-1.15.24l-2.2 2.2a15.18 15.18 0 0 1-6.5-6.5l2.2-2.2a1 1 0 0 0 .24-1.15L9.3 5.63a1 1 0 0 0-1.15-.85A5.26 5.26 0 0 0 3 9.72a17.22 17.22 0 0 0 15 15 5.25 5.25 0 0 0 4.94-5.15 1 1 0 0 0-.85-1.15z" fill="#02033b"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-[#02033b] text-[18px] md:text-[20px] font-bold mb-2">+39 0365 1780596</p>
+                        <p class="text-[#02033b] text-[18px] md:text-[20px] font-bold">+39 388 1412669</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email Card -->
+            <div class="bg-white border border-[#E5E7EB] rounded-[12px] p-6 md:p-8 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M28 6H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 4l-12 7.5L4 10V8l12 7.5L28 8v2z" fill="#02033b"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-[#02033b] text-[18px] md:text-[20px] font-bold">info@gardablick.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CONTACT FORM SECTION ============ -->
+<section class="bg-[#02033b] py-16 px-4 md:px-[30px]">
+    <div class="max-w-[1280px] mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <!-- Heading -->
+            <div>
+                <h2 class="text-white text-[32px] md:text-[40px] font-bold mb-4 uppercase" data-i18n="contact.formTitle">
+                    {% trans "Scrivici un messaggio" %}
+                </h2>
+            </div>
+
+            <!-- Form -->
+            <div>
+                <!-- Success message (hidden by default, shown via JS) -->
+                <div id="contact-success" class="mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-[8px] hidden">
+                    <p class="text-green-400 text-[16px] font-medium" data-i18n="contact.successMessage">{% trans "Messaggio inviato con successo!" %}</p>
+                </div>
+
+                <form id="contact-form" method="post" action="/api/contact/" class="space-y-6">
+                    {% csrf_token %}
+                    <input type="hidden" name="source" value="contact"/>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="nome" class="block text-white text-[14px] font-light mb-2" data-i18n="contact.firstName">{% trans "Nome" %}</label>
+                            <input type="text" id="nome" name="nome" required class="w-full px-4 py-3 bg-white border border-white/20 rounded-[8px] text-[#02033b] placeholder-[#02033b]/50 focus:outline-none focus:border-white/50" placeholder="{% trans "Nome" %}" data-i18n-placeholder="contact.firstName"/>
+                        </div>
+                        <div>
+                            <label for="cognome" class="block text-white text-[14px] font-light mb-2" data-i18n="contact.lastName">{% trans "Cognome" %}</label>
+                            <input type="text" id="cognome" name="cognome" required class="w-full px-4 py-3 bg-white border border-white/20 rounded-[8px] text-[#02033b] placeholder-[#02033b]/50 focus:outline-none focus:border-white/50" placeholder="{% trans "Cognome" %}" data-i18n-placeholder="contact.lastName"/>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="email" class="block text-white text-[14px] font-light mb-2" data-i18n="contact.email">{% trans "Email" %}</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-white border border-white/20 rounded-[8px] text-[#02033b] placeholder-[#02033b]/50 focus:outline-none focus:border-white/50" placeholder="{% trans "Email" %}" data-i18n-placeholder="contact.email"/>
+                        </div>
+                        <div>
+                            <label for="telefono" class="block text-white text-[14px] font-light mb-2" data-i18n="contact.phone">{% trans "Telefono" %}</label>
+                            <input type="tel" id="telefono" name="telefono" required class="w-full px-4 py-3 bg-white border border-white/20 rounded-[8px] text-[#02033b] placeholder-[#02033b]/50 focus:outline-none focus:border-white/50" placeholder="{% trans "Telefono" %}" data-i18n-placeholder="contact.phone"/>
+                            <p class="text-[#9CA3AF] text-[12px] mt-1" data-i18n="contact.phoneHint">{% trans "Includi il prefisso internazionale (es. +39)" %}</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="messaggio" class="block text-white text-[14px] font-light mb-2" data-i18n="contact.message">{% trans "Messaggio" %}</label>
+                        <textarea id="messaggio" name="messaggio" required rows="6" class="w-full px-4 py-3 bg-white border border-white/20 rounded-[8px] text-[#02033b] placeholder-[#02033b]/50 focus:outline-none focus:border-white/50 resize-none" placeholder="{% trans "Messaggio" %}" data-i18n-placeholder="contact.message"></textarea>
+                    </div>
+
+                    <div class="space-y-3">
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-[#02033b] border-white/20 rounded focus:ring-white/50" required name="privacy"/>
+                            <span class="text-white text-[14px] font-light"><span data-i18n="contact.privacyConsent">{% trans "Dichiaro di aver letto e compreso la" %}</span> <a href="/privacy-policy" class="underline hover:opacity-80" target="_blank">privacy policy</a></span>
+                        </label>
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-[#02033b] border-white/20 rounded focus:ring-white/50" name="updates"/>
+                            <span class="text-white text-[14px] font-light" data-i18n="contact.updatesConsent">{% trans "Desidero ricevere aggiornamenti sulle nuove proprietà e offerte" %}</span>
+                        </label>
+                    </div>
+
+                    <div class="flex justify-end">
+                        <button type="submit" class="bg-[#02033b] text-white px-8 py-4 rounded-[8px] font-medium text-[16px] hover:opacity-90 transition-opacity inline-flex items-center gap-3 border-2 border-white disabled:opacity-50">
+                            <span data-i18n="contact.sendMessage">{% trans "Invia messaggio" %}</span>
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 6H11M11 6L6 1M11 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CTA SECTION ============ -->
+<section class="bg-white py-12 px-4 md:px-[30px]">
+    <div class="max-w-[1280px] mx-auto flex justify-center">
+        <a class="bg-[#02033b] text-white px-8 md:px-12 py-4 md:py-5 rounded-[8px] font-medium text-[16px] md:text-[18px] uppercase tracking-[-0.08px] hover:opacity-90 transition-opacity inline-flex items-center gap-3" href="{% url 'immobili' %}">
+            <span data-i18n="contact.discoverProperties">{% trans "Scopri le nostre proprietà" %}</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 6H11M11 6L6 1M11 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </a>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function() {
+    var form = document.getElementById('contact-form');
+    var successMsg = document.getElementById('contact-success');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.querySelector('span').textContent = '...';
+
+        var formData = new FormData(form);
+        var data = {
+            first_name: formData.get('nome'),
+            last_name: formData.get('cognome'),
+            email: formData.get('email'),
+            phone: formData.get('telefono') || '',
+            message: formData.get('messaggio'),
+            privacy_accepted: formData.get('privacy') === 'on',
+            updates_accepted: formData.get('updates') === 'on',
+            source: 'contact'
+        };
+
+        fetch(form.action, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+            },
+            body: JSON.stringify(data)
+        })
+        .then(function(response) {
+            if (response.ok) {
+                successMsg.classList.remove('hidden');
+                form.reset();
+            }
+        })
+        .catch(function() {
+            /* Silently handle error */
+        })
+        .finally(function() {
+            btn.disabled = false;
+            btn.querySelector('span').textContent = window.gardablickI18n ? window.gardablickI18n.t('contact.sendMessage') : '{% trans "Invia messaggio" %}';
+        });
+    });
+})();
+</script>
+{% endblock %}

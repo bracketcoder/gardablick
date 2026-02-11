@@ -1,0 +1,9 @@
+nav > div:first-child > div:first-child {
+    justify-content: center !important;
+}
+
+/* Hide empty badge elements (badges with only whitespace) */
+nav a span.min-w-\[18px\].rounded-xs:empty,
+nav a span.min-w-\[18px\].rounded-xs:-moz-only-whitespace {
+    display: none !important;
+}

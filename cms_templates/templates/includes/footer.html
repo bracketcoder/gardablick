@@ -1,0 +1,48 @@
+{% load i18n static %}
+<footer class="bg-[#02033b] text-white py-12 px-4 md:px-[30px]">
+    <div class="max-w-[1280px] mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr_1px_1fr] gap-8 mb-8 items-center">
+            <!-- Logo -->
+            <div class="flex items-center justify-center md:justify-start">
+                <div class="relative w-[300px] h-[120px]">
+                    <img alt="Gardablick Logo" loading="lazy" class="object-contain" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/footerlogo.png' %}"/>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="hidden md:block w-px bg-white h-[192px] self-center"></div>
+
+            <!-- Address -->
+            <div class="flex flex-col justify-center items-center text-center">
+                <p class="text-white text-[16px] font-normal leading-[2.69] mb-2">Piazza Sergio Bresciani, 3</p>
+                <p class="text-white text-[16px] font-normal leading-[2.69] mb-2">25087 Sal&ograve;, Palazzo Morgante</p>
+                <p class="text-white text-[16px] font-normal leading-[2.69]">info@gardablick.com</p>
+            </div>
+
+            <!-- Divider -->
+            <div class="hidden md:block w-px bg-white h-[192px] self-center"></div>
+
+            <!-- Social Links -->
+            <div class="flex items-center gap-5 justify-center md:justify-end">
+                <a href="#" class="hover:opacity-80 transition-opacity" target="_blank" rel="noopener noreferrer">
+                    <img alt="WhatsApp" loading="lazy" width="32" height="32" class="brightness-0 invert" style="color:transparent;filter:brightness(0) invert(1)" src="{% static 'gardablick/images/social/whatsapp.png' %}"/>
+                </a>
+                <a href="#" class="hover:opacity-80 transition-opacity" target="_blank" rel="noopener noreferrer">
+                    <img alt="Instagram" loading="lazy" width="32" height="32" class="brightness-0 invert" style="color:transparent;filter:brightness(0) invert(1)" src="{% static 'gardablick/images/social/instagram.png' %}"/>
+                </a>
+                <a href="#" class="hover:opacity-80 transition-opacity" target="_blank" rel="noopener noreferrer">
+                    <img alt="Facebook" loading="lazy" width="32" height="32" class="brightness-0 invert" style="color:transparent;filter:brightness(0) invert(1)" src="{% static 'gardablick/images/social/facebook.png' %}"/>
+                </a>
+                <a href="#" class="hover:opacity-80 transition-opacity" target="_blank" rel="noopener noreferrer">
+                    <img alt="LinkedIn" loading="lazy" width="32" height="32" class="brightness-0 invert" style="color:transparent;filter:brightness(0) invert(1)" src="{% static 'gardablick/images/social/linkedin.png' %}"/>
+                </a>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="border-t border-white/20 my-8"></div>
+        <div class="text-center text-white/70 text-[14px] font-normal">
+            <p>&copy; {% now "Y" %} Gardablick. <span data-i18n="footer.copyright">{% trans "Powered by" %}</span> <a href="http://www.widev.it/" class="underline hover:opacity-80" target="_blank">Widev Srl.</a> | <a class="underline hover:opacity-80" href="{% url 'privacy-policy' %}"><span data-i18n="footer.privacyPolicy">{% trans "Privacy Policy" %}</span></a></p>
+        </div>
+    </div>
+</footer>

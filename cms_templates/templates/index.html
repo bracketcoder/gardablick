@@ -1,0 +1,354 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Home" %}{% endblock %}
+
+{% block content %}
+<!-- ============ HERO SECTION ============ -->
+<section class="relative h-[754px] w-full overflow-hidden">
+    <div class="absolute inset-0">
+        <img alt="Lake Garda" class="object-cover" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/121330fdc05a41c4db3d2a6db77c0b62ac331b84.png' %}"/>
+        <div class="absolute inset-0 bg-[#02033b] opacity-30"></div>
+    </div>
+
+    <div class="relative z-10 h-full flex flex-col items-center justify-end max-w-[1280px] mx-auto px-4 md:px-[30px] pb-8 md:pb-16">
+        <h1 class="text-white uppercase text-[32px] md:text-[40px] font-medium tracking-[-0.1354px] mb-8 text-center" data-i18n="hero.title">
+            {% trans "FIND YOUR HOME ON LAKE GARDA" %}
+        </h1>
+
+        <!-- Search Bar -->
+        <div class="w-full max-w-[1190px] bg-white/30 backdrop-blur-sm rounded-[8px] p-4">
+            <div class="flex flex-wrap gap-4 items-end">
+                <!-- Municipality -->
+                <div class="flex-1 min-w-[200px]">
+                    <div class="relative bg-white border border-[#02033b]/20 rounded-[8px] h-[55px] flex items-center px-4">
+                        <select name="municipality" class="flex-1 bg-transparent border-none outline-none text-[#02033b] text-[16px] appearance-none cursor-pointer">
+                            <option value="" data-i18n="filters.searchMunicipality">{% trans "Search Municipality" %}</option>
+                            <option value="all" data-i18n="filters.allMunicipalities">{% trans "All Municipalities" %}</option>
+                            <option value="Bardolino">Bardolino</option>
+                            <option value="Calvagese">Calvagese</option>
+                            <option value="Desenzano del Garda">Desenzano del Garda</option>
+                            <option value="Garda">Garda</option>
+                            <option value="Gardone Riviera">Gardone Riviera</option>
+                            <option value="Gargnano">Gargnano</option>
+                            <option value="Lazise">Lazise</option>
+                            <option value="Limone sul Garda">Limone sul Garda</option>
+                            <option value="Lonato">Lonato</option>
+                        </select>
+                        <div class="absolute right-4 pointer-events-none">
+                            <svg width="9" height="5" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L4.5 4L8 1" stroke="#02033b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- Distance -->
+                <div class="flex-1 min-w-[200px]">
+                    <div class="relative bg-white border border-black/20 rounded-[8px] h-[55px] flex items-center px-4">
+                        <select name="distance" class="flex-1 bg-transparent border-none outline-none text-[#02033b] text-[16px] appearance-none cursor-pointer">
+                            <option value="" data-i18n="filters.distanceKm">{% trans "Distance (km)" %}</option>
+                            <option value="all" data-i18n="filters.allDistances">{% trans "All Distances" %}</option>
+                            <option value="5" data-i18n="filters.within5km">{% trans "Within 5 km" %}</option>
+                            <option value="10" data-i18n="filters.within10km">{% trans "Within 10 km" %}</option>
+                            <option value="15" data-i18n="filters.within15km">{% trans "Within 15 km" %}</option>
+                            <option value="20" data-i18n="filters.within20km">{% trans "Within 20 km" %}</option>
+                        </select>
+                        <div class="absolute right-4 pointer-events-none">
+                            <svg width="9" height="5" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L4.5 4L8 1" stroke="#02033b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- Price Range -->
+                <div class="flex-1 min-w-[200px]">
+                    <div class="relative bg-white border border-black/20 rounded-[8px] h-[55px] flex items-center px-4">
+                        <select name="price_range" class="flex-1 bg-transparent border-none outline-none text-[#02033b] text-[16px] appearance-none cursor-pointer">
+                            <option value="" data-i18n="filters.priceRange">{% trans "Price Range" %}</option>
+                            <option value="all" data-i18n="filters.allPrices">{% trans "All Prices" %}</option>
+                            <option value="0-300000" data-i18n="filters.price0to300k">&euro; 0 - &euro; 300.000</option>
+                            <option value="300000-600000" data-i18n="filters.price300to600k">&euro; 300.000 - &euro; 600.000</option>
+                            <option value="600000-1000000" data-i18n="filters.price600kto1m">&euro; 600.000 - &euro; 1.000.000</option>
+                            <option value="1000000+" data-i18n="filters.priceOver1m">{% trans "Over" %} &euro; 1.000.000</option>
+                        </select>
+                        <div class="absolute right-4 pointer-events-none">
+                            <svg width="9" height="5" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L4.5 4L8 1" stroke="#02033b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- Property Type -->
+                <div class="flex-1 min-w-[200px]">
+                    <div class="relative bg-white border border-black/20 rounded-[8px] h-[55px] flex items-center px-4">
+                        <select name="property_type" class="flex-1 bg-transparent border-none outline-none text-[#02033b] text-[16px] appearance-none cursor-pointer">
+                            <option value="" data-i18n="filters.propertyType">{% trans "Property Type" %}</option>
+                            <option value="all" data-i18n="filters.allTypes">{% trans "All Types" %}</option>
+                            <option value="appartamento" data-i18n="filters.apartment">{% trans "Apartment" %}</option>
+                            <option value="attico" data-i18n="filters.penthouse">{% trans "Penthouse" %}</option>
+                            <option value="garage" data-i18n="filters.garage">{% trans "Garage" %}</option>
+                            <option value="casa-singola" data-i18n="filters.detachedHouse">{% trans "Detached House" %}</option>
+                            <option value="rustico" data-i18n="filters.farmhouse">{% trans "Farmhouse" %}</option>
+                            <option value="terreno" data-i18n="filters.buildingLand">{% trans "Building Land" %}</option>
+                            <option value="villa" data-i18n="filters.villas">{% trans "Villa" %}</option>
+                            <option value="villa-bifamiliare" data-i18n="filters.semiDetached">{% trans "Semi-Detached" %}</option>
+                            <option value="villa-schiera" data-i18n="filters.terraced">{% trans "Terraced" %}</option>
+                        </select>
+                        <div class="absolute right-4 pointer-events-none">
+                            <svg width="9" height="5" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L4.5 4L8 1" stroke="#02033b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- Search Button -->
+                <button id="hero-search-btn" class="bg-[#02033b] text-white uppercase px-8 h-[55px] rounded-[8px] font-light text-[16px] flex items-center gap-2 hover:opacity-90 transition-opacity" data-listings-url="{% url 'immobili' %}">
+                    <span data-i18n="filters.search">{% trans "SEARCH" %}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FEATURED PROPERTIES ============ -->
+<section class="bg-white py-16 px-4 md:px-[30px]">
+    <div class="max-w-[1280px] mx-auto">
+        <div class="flex items-start justify-between mb-12">
+            <div>
+                <p class="text-[rgba(2,3,59,0.5)] text-[16px] font-medium mb-2" data-i18n="listings.marketNews">{% trans "Market News" %}</p>
+                <h2 class="text-[#02033b] uppercase text-[32px] md:text-[40px] font-medium tracking-[-0.1466px]" data-i18n="listings.featuredProperties">{% trans "FEATURED PROPERTIES" %}</h2>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12" id="home-properties">
+            <!-- Properties loaded via JavaScript from API -->
+        </div>
+
+        <div class="flex justify-center">
+            <a class="bg-[#02033b] text-white uppercase px-8 py-3 rounded-[6px] font-medium text-[16px] flex items-center gap-2 hover:opacity-90 transition-opacity shadow-md" href="{% url 'immobili' %}">
+                <span data-i18n="listings.discoverAll">{% trans "DISCOVER ALL" %}</span>
+                <svg width="9" height="5" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L4.5 4L8 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ ABOUT SECTION ============ -->
+<section class="bg-white py-16 px-4 md:px-[30px]">
+    <div class="max-w-[1280px] mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="relative h-[387px] w-full rounded-[13px] overflow-hidden shadow-lg">
+                <img alt="Office interior" loading="lazy" class="object-cover" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/544c69cb4df29b71e60878df83209841b7cb5032.png' %}"/>
+            </div>
+            <div>
+                <p class="text-[rgba(2,3,59,0.5)] text-[16px] font-medium mb-2 uppercase" data-i18n="about.subtitle">{% trans "About Us" %}</p>
+                <h2 class="text-[#02033b] uppercase text-[32px] md:text-[40px] font-medium tracking-[-0.1466px] mb-6" data-i18n="about.heading">{% trans "GARDABLICK REAL ESTATE AGENCY" %}</h2>
+                <div class="text-[#727272] text-[16px] font-normal leading-[1.45] tracking-[-0.1712px] mb-6 space-y-4">
+                    <p data-i18n="about.paragraph1">{% trans "We are a young and dynamic real estate agency located in the heart of Sal&ograve;, on the shores of Lake Garda." %}</p>
+                    <p data-i18n="about.paragraph2">{% trans "Our mission is to help you find the property of your dreams, offering personalized advice and a deep knowledge of the area." %}</p>
+                </div>
+                <a class="inline-flex items-center gap-2 text-[#141414] text-[16px] font-medium underline hover:opacity-80" href="{% url 'chi-siamo' %}">
+                    <span data-i18n="about.learnMore">{% trans "Learn More" %}</span>
+                    <img alt="" loading="lazy" width="9" height="5" class="rotate-[-90deg]" style="color:transparent" src="{% static 'gardablick/images/312183a2cf6164b0db97392c348dbdc6033badac.svg' %}"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ SERVICES SECTION ============ -->
+<section class="bg-white py-16 px-4 md:px-[30px]">
+    <div class="max-w-[1280px] mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="relative h-[387px] w-full rounded-[14px] overflow-hidden shadow-lg order-1 lg:order-2">
+                <img alt="Business professionals" loading="lazy" class="object-cover" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/9680ff58c225fc8ea3c6db941e8773f951ac1b71.png' %}"/>
+            </div>
+            <div class="order-2 lg:order-1">
+                <p class="text-[rgba(2,3,59,0.5)] text-[16px] font-medium mb-2 uppercase" data-i18n="services.subtitle">{% trans "Services" %}</p>
+                <h2 class="text-[#02033b] uppercase text-[32px] md:text-[40px] font-medium tracking-[-0.1466px] mb-6" data-i18n="services.heading">{% trans "WE TAKE CARE OF EVERY DETAIL" %}</h2>
+                <div class="text-[#727272] text-[16px] font-normal leading-[1.45] tracking-[-0.1712px] mb-6 space-y-4">
+                    <p data-i18n="services.paragraph1">{% trans "Our team of professionals accompanies you in every phase of buying, selling and managing your property." %}</p>
+                </div>
+                <a class="inline-flex items-center gap-2 text-[#141414] text-[16px] font-medium underline hover:opacity-80" href="{% url 'servizi' %}">
+                    <span data-i18n="services.learnMore">{% trans "Learn More" %}</span>
+                    <img alt="" loading="lazy" width="9" height="5" class="rotate-[-90deg]" style="color:transparent" src="{% static 'gardablick/images/312183a2cf6164b0db97392c348dbdc6033badac.svg' %}"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ SERVICE ICONS ============ -->
+<section class="bg-white py-16 px-4 md:px-[30px]">
+    <div class="max-w-[1280px] mx-auto">
+        <p class="text-[#02033b]/70 text-[14px] md:text-[16px] font-light uppercase tracking-wider mb-8 md:mb-12" data-i18n="services.subtitle">{% trans "Services" %}</p>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 justify-items-center">
+            <div class="rounded-lg shadow-md text-center hover:shadow-lg transition-all duration-300 flex flex-col items-center justify-center mx-auto w-[140px] h-[170px] p-[10px] md:w-[190px] md:h-[225px] md:p-4" style="background-color:#FAFAFA">
+                <div class="relative w-full flex items-center justify-center mb-2 md:mb-4 flex-shrink-0 h-[90px] md:h-[calc(100%-60px)]">
+                    <div class="w-[45px] h-[45px] md:w-[70px] md:h-[70px] relative">
+                        <img alt="Property Hunting" loading="lazy" class="object-contain max-w-full max-h-full" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/service-icons/Property hunting.png' %}"/>
+                    </div>
+                </div>
+                <h3 class="text-[#02033b] text-[11px] md:text-[16px] font-medium uppercase tracking-[-0.11px] leading-[1.3] md:leading-[1.4]" data-i18n="serviceIcons.propertyHunting">{% trans "Property Hunting" %}</h3>
+            </div>
+            <div class="rounded-lg shadow-md text-center hover:shadow-lg transition-all duration-300 flex flex-col items-center justify-center mx-auto w-[140px] h-[170px] p-[10px] md:w-[190px] md:h-[225px] md:p-4" style="background-color:#FAFAFA">
+                <div class="relative w-full flex items-center justify-center mb-2 md:mb-4 flex-shrink-0 h-[90px] md:h-[calc(100%-60px)]">
+                    <div class="w-[45px] h-[45px] md:w-[70px] md:h-[70px] relative">
+                        <img alt="Property Valuations" loading="lazy" class="object-contain max-w-full max-h-full" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/service-icons/Valutazioni Immobiliari.png' %}"/>
+                    </div>
+                </div>
+                <h3 class="text-[#02033b] text-[11px] md:text-[16px] font-medium uppercase tracking-[-0.11px] leading-[1.3] md:leading-[1.4]" data-i18n="serviceIcons.propertyValuations">{% trans "Property Valuations" %}</h3>
+            </div>
+            <div class="rounded-lg shadow-md text-center hover:shadow-lg transition-all duration-300 flex flex-col items-center justify-center mx-auto w-[140px] h-[170px] p-[10px] md:w-[190px] md:h-[225px] md:p-4" style="background-color:#FAFAFA">
+                <div class="relative w-full flex items-center justify-center mb-2 md:mb-4 flex-shrink-0 h-[90px] md:h-[calc(100%-60px)]">
+                    <div class="w-[45px] h-[45px] md:w-[70px] md:h-[70px] relative">
+                        <img alt="Photography Service" loading="lazy" class="object-contain max-w-full max-h-full" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/service-icons/Servizio fotografico.png' %}"/>
+                    </div>
+                </div>
+                <h3 class="text-[#02033b] text-[11px] md:text-[16px] font-medium uppercase tracking-[-0.11px] leading-[1.3] md:leading-[1.4]" data-i18n="serviceIcons.photographyService">{% trans "Photography Service" %}</h3>
+            </div>
+            <div class="rounded-lg shadow-md text-center hover:shadow-lg transition-all duration-300 flex flex-col items-center justify-center mx-auto w-[140px] h-[170px] p-[10px] md:w-[190px] md:h-[225px] md:p-4" style="background-color:#FAFAFA">
+                <div class="relative w-full flex items-center justify-center mb-2 md:mb-4 flex-shrink-0 h-[90px] md:h-[calc(100%-60px)]">
+                    <div class="w-[45px] h-[45px] md:w-[70px] md:h-[70px] relative">
+                        <img alt="Real Estate Consultancy" loading="lazy" class="object-contain max-w-full max-h-full" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/service-icons/consulenze immobiliari.png' %}"/>
+                    </div>
+                </div>
+                <h3 class="text-[#02033b] text-[11px] md:text-[16px] font-medium uppercase tracking-[-0.11px] leading-[1.3] md:leading-[1.4]" data-i18n="serviceIcons.realEstateConsultancy">{% trans "Real Estate Consultancy" %}</h3>
+            </div>
+            <div class="rounded-lg shadow-md text-center hover:shadow-lg transition-all duration-300 flex flex-col items-center justify-center mx-auto w-[140px] h-[170px] p-[10px] md:w-[190px] md:h-[225px] md:p-4" style="background-color:#FAFAFA">
+                <div class="relative w-full flex items-center justify-center mb-2 md:mb-4 flex-shrink-0 h-[90px] md:h-[calc(100%-60px)]">
+                    <div class="w-[45px] h-[45px] md:w-[70px] md:h-[70px] relative">
+                        <img alt="After-Sales Assistance" loading="lazy" class="object-contain max-w-full max-h-full" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/service-icons/Assistenza.png' %}"/>
+                    </div>
+                </div>
+                <h3 class="text-[#02033b] text-[11px] md:text-[16px] font-medium uppercase tracking-[-0.11px] leading-[1.3] md:leading-[1.4]" data-i18n="serviceIcons.afterSalesAssistance">{% trans "After-Sales Assistance" %}</h3>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function() {
+    /* ── i18n helper ── */
+    function getLang() {
+        try { var s = localStorage.getItem('gardablick_locale'); if (s) return s; } catch(e) {}
+        return 'it';
+    }
+
+    /* ── Safe DOM helpers ── */
+    function createEl(tag, className, text) {
+        var el = document.createElement(tag);
+        if (className) el.className = className;
+        if (text) el.textContent = text;
+        return el;
+    }
+    function createImg(src, alt, className, width, height) {
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = alt || '';
+        if (className) img.className = className;
+        if (width) img.width = width;
+        if (height) img.height = height;
+        return img;
+    }
+
+    /* ── 1. Hero Search Bar ── */
+    var searchBtn = document.getElementById('hero-search-btn');
+    if (searchBtn) {
+        searchBtn.addEventListener('click', function() {
+            var selects = searchBtn.closest('.p-4');
+            var municipality = selects.querySelector('select[name="municipality"]').value;
+            var priceRange = selects.querySelector('select[name="price_range"]').value;
+            var propertyType = selects.querySelector('select[name="property_type"]').value;
+
+            var params = new URLSearchParams();
+            if (municipality && municipality !== 'all') {
+                params.set('location', municipality);
+            }
+            if (priceRange && priceRange !== 'all') {
+                if (priceRange === '1000000+') {
+                    params.set('price_min', '1000000');
+                } else {
+                    var parts = priceRange.split('-');
+                    if (parts[0]) params.set('price_min', parts[0]);
+                    if (parts[1]) params.set('price_max', parts[1]);
+                }
+            }
+            if (propertyType && propertyType !== 'all') {
+                params.set('property_type', propertyType);
+            }
+
+            var baseUrl = searchBtn.getAttribute('data-listings-url') || '/immobili/';
+            var query = params.toString();
+            window.location.href = baseUrl + (query ? '?' + query : '');
+        });
+    }
+
+    /* ── 2. Featured Properties ── */
+    var grid = document.getElementById('home-properties');
+    if (grid) {
+        var lang = getLang();
+        var bedIconSrc = '{% static "gardablick/images/pageicon/bed.png" %}';
+        var bathIconSrc = '{% static "gardablick/images/pageicon/besin.png" %}';
+        var areaIconSrc = '{% static "gardablick/images/bd4a3b52e27c0286e07f8577f70881be8d989929.svg" %}';
+        var locationIconSrc = '{% static "gardablick/images/pageicon/map.png" %}';
+
+        /* Show skeleton loaders while fetching */
+        for (var s = 0; s < 6; s++) {
+            var skel = createEl('div', 'rounded-[6px] overflow-hidden bg-gray-100 animate-pulse');
+            skel.appendChild(createEl('div', 'h-[241px] bg-gray-200'));
+            var skelBody = createEl('div', 'p-4 space-y-3');
+            skelBody.appendChild(createEl('div', 'h-4 w-2/3 bg-gray-200 rounded'));
+            skelBody.appendChild(createEl('div', 'h-6 w-1/3 bg-gray-200 rounded'));
+            skelBody.appendChild(createEl('div', 'h-4 w-full bg-gray-200 rounded'));
+            skel.appendChild(skelBody);
+            grid.appendChild(skel);
+        }
+
+        fetch('/api/properties/?lang=' + encodeURIComponent(lang) + '&page_size=6')
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                grid.textContent = '';
+                var results = data.results || [];
+                results.slice(0, 6).forEach(function(p) {
+                    var card = document.createElement('a');
+                    card.href = '/details/' + p.id + '/';
+                    card.className = 'rounded-[6px] overflow-hidden hover:shadow-lg transition-shadow bg-white shadow-sm';
+
+                    /* Image */
+                    var imgWrap = createEl('div', 'relative h-[241px] w-full');
+                    imgWrap.appendChild(createImg(p.image || '', p.title || '', 'object-cover absolute inset-0 w-full h-full'));
+                    card.appendChild(imgWrap);
+
+                    /* Details */
+                    var details = createEl('div', 'p-4');
+                    details.appendChild(createEl('h3', 'text-[#02033b] text-[16px] font-normal mb-3 line-clamp-2 min-h-[48px]', p.title || ''));
+
+                    /* Price + Location */
+                    var row1 = createEl('div', 'flex items-center justify-between mb-3');
+                    row1.appendChild(createEl('p', 'text-[#02033b] text-[20px] font-bold underline', p.price || ''));
+                    var locWrap = createEl('div', 'flex items-center gap-2');
+                    locWrap.appendChild(createImg(locationIconSrc, 'Location', '', 16, 16));
+                    locWrap.appendChild(createEl('span', 'text-[#02033b] text-[16px] font-light', p.location || ''));
+                    row1.appendChild(locWrap);
+                    details.appendChild(row1);
+
+                    /* Ref + Icons */
+                    var row2 = createEl('div', 'flex items-center justify-between');
+                    row2.appendChild(createEl('span', 'text-[#02033b] text-[14px] font-light', p.ref || ''));
+                    var icons = createEl('div', 'flex items-center gap-3');
+                    function addIcon(iconSrc, alt, value) {
+                        var wrap = createEl('div', 'flex items-center gap-1');
+                        wrap.appendChild(createImg(iconSrc, alt, '', 16, 16));
+                        wrap.appendChild(createEl('span', 'text-[#02033b] text-[12px] font-light', String(value || 0)));
+                        icons.appendChild(wrap);
+                    }
+                    addIcon(areaIconSrc, 'Area', p.area || '');
+                    addIcon(bedIconSrc, 'Bedrooms', p.bedrooms || 0);
+                    addIcon(bathIconSrc, 'Bathrooms', p.bathrooms || 0);
+                    row2.appendChild(icons);
+                    details.appendChild(row2);
+
+                    card.appendChild(details);
+                    grid.appendChild(card);
+                });
+            })
+            .catch(function() { /* silently fail */ });
+    }
+})();
+</script>
+{% endblock %}

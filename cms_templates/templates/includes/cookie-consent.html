@@ -1,0 +1,113 @@
+{% load static %}
+<!-- Cookie Consent Backdrop -->
+<div id="cookie-backdrop" class="fixed inset-0 bg-black/40 z-[998] hidden"></div>
+
+<!-- Cookie Consent Modal -->
+<div id="cookie-modal" class="fixed inset-0 z-[999] flex items-center justify-center px-4 hidden">
+    <div class="bg-white rounded-[12px] w-full max-w-[540px] shadow-2xl overflow-hidden">
+        <!-- Header -->
+        <div class="flex items-center justify-between px-6 pt-5 pb-3">
+            <div class="relative w-[140px] h-[40px]">
+                <img src="{% static 'gardablick/images/full-logo-black.png' %}" alt="Gardablick" class="object-contain object-left" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent"/>
+            </div>
+            <div class="flex items-center gap-1.5">
+                <span class="text-[#02033b]/50 text-[11px] font-light tracking-wide">Cookiebot</span>
+                <span class="text-[#02033b]/30 text-[10px]">by Usercentrics</span>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="flex border-b border-gray-200 px-6">
+            <button data-cookie-tab="consent" class="cookie-tab py-3 px-4 text-[13px] font-medium border-b-2 transition-colors border-[#02033b] text-[#02033b]">
+                <span data-i18n="cookie.consent">Consenso</span>
+            </button>
+            <button data-cookie-tab="details" class="cookie-tab py-3 px-4 text-[13px] font-medium border-b-2 transition-colors border-transparent text-[#02033b]/50 hover:text-[#02033b]/70">
+                <span data-i18n="cookie.details">Dettagli</span>
+            </button>
+            <button data-cookie-tab="info" class="cookie-tab py-3 px-4 text-[13px] font-medium border-b-2 transition-colors border-transparent text-[#02033b]/50 hover:text-[#02033b]/70">
+                <span data-i18n="cookie.info">Informazioni</span>
+            </button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="px-6 py-5">
+            <!-- Consent Tab -->
+            <div id="cookie-panel-consent" class="cookie-panel">
+                <h3 class="text-[#02033b] text-[15px] font-semibold mb-3" data-i18n="cookie.title">Questo sito web utilizza i cookie</h3>
+                <p class="text-[#02033b]/70 text-[12px] leading-[1.7] mb-5" data-i18n="cookie.description">Utilizziamo i cookie per personalizzare contenuti e annunci, fornire funzionalit&agrave; dei social media e analizzare il nostro traffico.</p>
+            </div>
+
+            <!-- Details Tab -->
+            <div id="cookie-panel-details" class="cookie-panel hidden">
+                <h3 class="text-[#02033b] text-[15px] font-semibold mb-3" data-i18n="cookie.detailsTitle">Dettagli sui cookie</h3>
+                <p class="text-[#02033b]/70 text-[12px] leading-[1.7] mb-3" data-i18n="cookie.necessaryDesc">I cookie necessari contribuiscono a rendere fruibile il sito web.</p>
+                <p class="text-[#02033b]/70 text-[12px] leading-[1.7] mb-3" data-i18n="cookie.preferenceDesc">I cookie di preferenza consentono al sito di ricordare informazioni utili.</p>
+                <p class="text-[#02033b]/70 text-[12px] leading-[1.7] mb-3" data-i18n="cookie.statisticsDesc">I cookie statistici aiutano i proprietari del sito a capire come i visitatori interagiscono.</p>
+                <p class="text-[#02033b]/70 text-[12px] leading-[1.7]" data-i18n="cookie.marketingDesc">I cookie di marketing vengono utilizzati per tracciare i visitatori attraverso i siti web.</p>
+            </div>
+
+            <!-- Info Tab -->
+            <div id="cookie-panel-info" class="cookie-panel hidden">
+                <h3 class="text-[#02033b] text-[15px] font-semibold mb-3" data-i18n="cookie.infoTitle">Informazioni sui cookie</h3>
+                <p class="text-[#02033b]/70 text-[12px] leading-[1.7] mb-3" data-i18n="cookie.infoDesc1">I cookie sono piccoli file di testo che possono essere utilizzati dai siti web.</p>
+                <p class="text-[#02033b]/70 text-[12px] leading-[1.7]" data-i18n="cookie.infoDesc2">La legge afferma che possiamo memorizzare i cookie sul tuo dispositivo se sono strettamente necessari.</p>
+            </div>
+        </div>
+
+        <!-- Toggles -->
+        <div class="px-6 pb-5">
+            <div class="flex items-center justify-between gap-2">
+                <!-- Necessary (always on) -->
+                <div class="flex flex-col items-center gap-2">
+                    <span class="text-[#02033b] text-[12px] font-medium" data-i18n="cookie.necessaryLabel">Necessari</span>
+                    <div class="relative w-[44px] h-[24px]">
+                        <div class="w-full h-full bg-[#02033b] rounded-full cursor-not-allowed"></div>
+                        <div class="absolute right-[3px] top-[3px] w-[18px] h-[18px] bg-white rounded-full"></div>
+                    </div>
+                </div>
+
+                <!-- Preferences -->
+                <div class="flex flex-col items-center gap-2">
+                    <span class="text-[#02033b] text-[12px] font-medium" data-i18n="cookie.preferencesLabel">Preferenze</span>
+                    <button data-cookie-toggle="preferences" class="cookie-toggle relative w-[44px] h-[24px] focus:outline-none">
+                        <div class="cookie-toggle-track w-full h-full rounded-full transition-colors bg-gray-300"></div>
+                        <div class="cookie-toggle-thumb absolute top-[3px] left-[3px] w-[18px] h-[18px] bg-white rounded-full transition-all"></div>
+                    </button>
+                </div>
+
+                <!-- Statistics -->
+                <div class="flex flex-col items-center gap-2">
+                    <span class="text-[#02033b] text-[12px] font-medium" data-i18n="cookie.statisticsLabel">Statistiche</span>
+                    <button data-cookie-toggle="statistics" class="cookie-toggle relative w-[44px] h-[24px] focus:outline-none">
+                        <div class="cookie-toggle-track w-full h-full rounded-full transition-colors bg-gray-300"></div>
+                        <div class="cookie-toggle-thumb absolute top-[3px] left-[3px] w-[18px] h-[18px] bg-white rounded-full transition-all"></div>
+                    </button>
+                </div>
+
+                <!-- Marketing -->
+                <div class="flex flex-col items-center gap-2">
+                    <span class="text-[#02033b] text-[12px] font-medium" data-i18n="cookie.marketingLabel">Marketing</span>
+                    <button data-cookie-toggle="marketing" class="cookie-toggle relative w-[44px] h-[24px] focus:outline-none">
+                        <div class="cookie-toggle-track w-full h-full rounded-full transition-colors bg-gray-300"></div>
+                        <div class="cookie-toggle-thumb absolute top-[3px] left-[3px] w-[18px] h-[18px] bg-white rounded-full transition-all"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="px-6 pb-6">
+            <div class="flex items-center gap-3">
+                <button id="cookie-reject" class="flex-1 py-3 border-2 border-[#02033b] text-[#02033b] rounded-[8px] text-[13px] font-semibold hover:bg-[#02033b]/5 transition-colors">
+                    <span data-i18n="cookie.reject">Rifiuta</span>
+                </button>
+                <button id="cookie-accept-selected" class="flex-1 py-3 border-2 border-[#02033b] text-[#02033b] rounded-[8px] text-[13px] font-semibold hover:bg-[#02033b]/5 transition-colors">
+                    <span data-i18n="cookie.acceptSelected">Accetta selezionati</span>
+                </button>
+                <button id="cookie-accept-all" class="flex-1 py-3 bg-[#02033b] text-white rounded-[8px] text-[13px] font-semibold hover:opacity-90 transition-opacity">
+                    <span data-i18n="cookie.acceptAll">Accetta tutti</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

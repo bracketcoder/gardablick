@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+
+# Virtual environment
+backend/venv/
+
+# Database
+backend/db.sqlite3
+
+# Media uploads
+backend/media/
+
+# Django collected static (regenerated via collectstatic)
+backend/staticfiles/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+.DS_Store?
+
+# Environment
+.env
+*.env
+
+# Playwright MCP
+.playwright-mcp/
+
+# Claude
+.claude/
+
+# Misc
+*.log
+firebase-debug.log
+task.md

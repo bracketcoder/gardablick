@@ -1,0 +1,604 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Dettaglio Immobile" %}{% endblock %}
+
+{% block header %}
+<!-- Minimal top bar: back to homepage only -->
+<div class="bg-white border-b border-gray-100">
+    <div class="max-w-[1280px] mx-auto px-4 md:px-[30px] py-4">
+        <a href="/" class="inline-flex items-center gap-2 text-[#02033b] text-[14px] font-medium hover:opacity-70 transition-opacity">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span data-i18n="details.backToHomepage">{% trans "Torna alla homepage" %}</span>
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block content %}
+<div class="max-w-[1280px] mx-auto px-4 md:px-[30px] pt-8">
+
+    <!-- ============ LOADING SKELETON ============ -->
+    <div id="detail-skeleton">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-8">
+            <div class="lg:col-span-3 h-[500px] rounded-lg bg-gray-200 animate-pulse"></div>
+            <div class="flex flex-col gap-4">
+                <div class="h-[110px] rounded-lg bg-gray-200 animate-pulse"></div>
+                <div class="h-[110px] rounded-lg bg-gray-200 animate-pulse"></div>
+                <div class="h-[110px] rounded-lg bg-gray-200 animate-pulse"></div>
+                <div class="h-[110px] rounded-lg bg-gray-200 animate-pulse"></div>
+            </div>
+        </div>
+        <div class="h-8 w-2/3 bg-gray-200 animate-pulse rounded mb-4"></div>
+        <div class="h-6 w-1/3 bg-gray-200 animate-pulse rounded mb-8"></div>
+    </div>
+
+    <!-- ============ PROPERTY CONTENT (hidden until loaded) ============ -->
+    <div id="detail-content" class="hidden">
+
+        <!-- ============ IMAGE GALLERY ============ -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-8">
+            <!-- Main Image -->
+            <div id="gallery-main" class="lg:col-span-3 relative h-[500px] rounded-lg overflow-hidden group cursor-pointer" onclick="openLightbox(galleryState.current)">
+                <img id="gallery-main-img" alt="Property main image" class="object-cover absolute inset-0 w-full h-full" src=""/>
+                <!-- Navigation Arrows -->
+                <button onclick="event.stopPropagation(); galleryPrev()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full transition-all opacity-0 group-hover:opacity-100 z-10" aria-label="Previous image">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button onclick="event.stopPropagation(); galleryNext()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full transition-all opacity-0 group-hover:opacity-100 z-10" aria-label="Next image">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </div>
+            <!-- Thumbnail Gallery -->
+            <div id="gallery-thumbs" class="flex flex-col gap-4">
+                <!-- Thumbnails populated by JS -->
+            </div>
+        </div>
+
+        <!-- ============ PROPERTY INFO SECTION ============ -->
+        <div class="mb-8">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                <div class="flex-1">
+                    <h1 id="prop-title" class="text-[#02033b] text-[32px] font-bold mb-4 leading-tight"></h1>
+                    <div class="flex items-center gap-2">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 8C9.10457 8 10 7.10457 10 6C10 4.89543 9.10457 4 8 4C6.89543 4 6 4.89543 6 6C6 7.10457 6.89543 8 8 8Z" fill="#02033b"/><path d="M8 0C5.23858 0 3 2.23858 3 5C3 8.5 8 16 8 16C8 16 13 8.5 13 5C13 2.23858 10.7614 0 8 0ZM8 7C6.89543 7 6 6.10457 6 5C6 3.89543 6.89543 3 8 3C9.10457 3 10 3.89543 10 5C10 6.10457 9.10457 7 8 7Z" fill="#02033b"/></svg>
+                        <span id="prop-location" class="text-[#02033b] text-[16px] font-light"></span>
+                    </div>
+                </div>
+                <div class="flex flex-col items-end">
+                    <p id="prop-price" class="text-[#02033b] text-[36px] font-bold"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ MAIN CONTENT GRID ============ -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
+            <!-- Left Column: Description -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Description -->
+                <div>
+                    <h2 class="text-[#02033b] text-[24px] font-bold mb-4" data-i18n="details.description">{% trans "Descrizione" %}</h2>
+                    <div id="prop-description" class="text-[#02033b] text-[16px] font-light leading-relaxed whitespace-pre-line"></div>
+                </div>
+
+                <!-- Composition -->
+                <div>
+                    <h2 class="text-[#02033b] text-[24px] font-bold mb-4" data-i18n="details.composition">{% trans "Composizione" %}</h2>
+                    <ul id="prop-composition" class="space-y-3">
+                        <!-- Populated by JS -->
+                    </ul>
+                    <p id="prop-composition-note" class="text-[#02033b] text-[16px] font-light leading-relaxed mt-4 hidden"></p>
+                    <p id="prop-location-note" class="text-[#02033b] text-[16px] font-light leading-relaxed mt-2 hidden"></p>
+
+                    <!-- Share Icons -->
+                    <div class="flex items-center gap-4 mt-6">
+                        <button id="share-whatsapp" class="p-2 hover:opacity-80 transition-opacity" aria-label="Share on WhatsApp">
+                            <img src="{% static 'gardablick/images/social/whatsapp.png' %}" alt="WhatsApp" width="40" height="40" class="rounded-full"/>
+                        </button>
+                        <button onclick="window.print()" class="p-2 hover:opacity-80 transition-opacity" aria-label="Print">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M6 9V2H18V9M6 18H4C2.89543 18 2 17.1046 2 16V11C2 9.89543 2.89543 9 4 9H20C21.1046 9 22 9.89543 22 11V16C22 17.1046 21.1046 18 20 18H18M6 14H18V22H6V14Z" stroke="#02033b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <button id="share-link" class="p-2 hover:opacity-80 transition-opacity" aria-label="Share">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M18 16C19.1046 16 20 15.1046 20 14C20 12.8954 19.1046 12 18 12C16.8954 12 16 12.8954 16 14C16 14.3506 16.0602 14.6872 16.1707 15M6 8C7.10457 8 8 7.10457 8 6C8 4.89543 7.10457 4 6 4C4.89543 4 4 4.89543 4 6C4 6.35064 4.06015 6.68722 4.17071 7M18 8C19.1046 8 20 7.10457 20 6C20 4.89543 19.1046 4 18 4C16.8954 4 16 4.89543 16 6C16 6.35064 16.0602 6.68722 16.1707 7M6 16C7.10457 16 8 15.1046 8 14C8 12.8954 7.10457 12 6 12C4.89543 12 4 12.8954 4 14C4 14.3506 4.06015 14.6872 4.17071 15M12 7L16 7M8 17L12 17" stroke="#02033b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Characteristics & Map -->
+            <div class="space-y-8">
+                <!-- Characteristics -->
+                <div>
+                    <h2 class="text-[#02033b] text-[24px] font-bold mb-6" data-i18n="details.characteristics">{% trans "Caratteristiche" %}</h2>
+                    <div id="prop-characteristics" class="space-y-4">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Map -->
+                <div id="prop-map-section" class="hidden">
+                    <h2 class="text-[#02033b] text-[24px] font-bold mb-6" data-i18n="details.map">{% trans "Mappa" %}</h2>
+                    <div class="relative w-full h-[300px] rounded-lg overflow-hidden">
+                        <iframe id="prop-map-iframe" src="" width="100%" height="100%" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <a id="prop-map-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-[#02033b] text-[14px] font-light mt-4 hover:underline">
+                        <span data-i18n="details.openMap">{% trans "Apri mappa" %}</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============ CONTACT FORM SECTION ============ -->
+<section class="bg-[#02033b] py-20 px-4 md:px-[30px] relative pb-56 mt-16">
+    <div class="max-w-[1280px] mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div>
+                <h2 class="text-white text-[36px] font-bold mb-4" data-i18n="details.infoRequest">{% trans "Richiedi informazioni" %}</h2>
+            </div>
+            <div>
+                <div id="detail-contact-success" class="mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-[8px] hidden">
+                    <p class="text-green-400 text-[16px] font-medium" data-i18n="contact.successMessage">{% trans "Messaggio inviato con successo!" %}</p>
+                </div>
+                <form id="detail-contact-form" method="post" action="/api/contact/" class="space-y-6">
+                    {% csrf_token %}
+                    <input type="hidden" name="source" value="property"/>
+                    <input type="hidden" name="property_ref" id="form-property-ref" value=""/>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="detail-nome" class="block text-white text-[14px] font-light mb-2" data-i18n="details.firstName">{% trans "Nome" %}</label>
+                            <input type="text" id="detail-nome" name="nome" required class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-[8px] text-white placeholder-white/50 focus:outline-none focus:border-white/50" placeholder="{% trans "Nome" %}" data-i18n-placeholder="details.firstName"/>
+                        </div>
+                        <div>
+                            <label for="detail-cognome" class="block text-white text-[14px] font-light mb-2" data-i18n="details.lastName">{% trans "Cognome" %}</label>
+                            <input type="text" id="detail-cognome" name="cognome" required class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-[8px] text-white placeholder-white/50 focus:outline-none focus:border-white/50" placeholder="{% trans "Cognome" %}" data-i18n-placeholder="details.lastName"/>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="detail-email" class="block text-white text-[14px] font-light mb-2" data-i18n="details.email">{% trans "Email" %}</label>
+                            <input type="email" id="detail-email" name="email" required class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-[8px] text-white placeholder-white/50 focus:outline-none focus:border-white/50" placeholder="Email" data-i18n-placeholder="details.email"/>
+                        </div>
+                        <div>
+                            <label for="detail-telefono" class="block text-white text-[14px] font-light mb-2" data-i18n="details.phone">{% trans "Telefono" %}</label>
+                            <input type="tel" id="detail-telefono" name="telefono" required class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-[8px] text-white placeholder-white/50 focus:outline-none focus:border-white/50" placeholder="{% trans "Telefono" %}" data-i18n-placeholder="details.phone"/>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="detail-messaggio" class="block text-white text-[14px] font-light mb-2" data-i18n="details.message">{% trans "Messaggio" %}</label>
+                        <textarea id="detail-messaggio" name="messaggio" required rows="6" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-[8px] text-white placeholder-white/50 focus:outline-none focus:border-white/50 resize-none" placeholder="{% trans "Messaggio" %}" data-i18n-placeholder="details.message"></textarea>
+                    </div>
+
+                    <div class="space-y-3">
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-[#02033b] border-white/20 rounded focus:ring-white/50" required name="privacy"/>
+                            <span class="text-white text-[14px] font-light"><span data-i18n="details.privacyConsent">{% trans "Dichiaro di aver letto e compreso la" %}</span> <a href="/privacy-policy" class="underline hover:opacity-80" target="_blank">privacy policy</a></span>
+                        </label>
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-[#02033b] border-white/20 rounded focus:ring-white/50" name="updates"/>
+                            <span class="text-white text-[14px] font-light" data-i18n="details.updatesConsent">{% trans "Desidero ricevere aggiornamenti sulle nuove proprietà e offerte" %}</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="w-full md:w-auto px-8 py-3 bg-white text-[#02033b] font-medium rounded-[8px] hover:bg-white/90 transition-colors flex items-center gap-2 disabled:opacity-50">
+                        <span data-i18n="details.sendMessage">{% trans "Invia messaggio" %}</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ SIMILAR PROPERTIES SECTION ============ -->
+<div id="similar-section" class="hidden relative">
+    <div class="px-4 md:px-[30px] py-8 relative -mt-40 z-10">
+        <div class="max-w-[1280px] mx-auto">
+            <h2 class="text-white text-[24px] md:text-[32px] font-bold" data-i18n="details.similarProperties">{% trans "Immobili simili" %}</h2>
+        </div>
+    </div>
+    <div class="px-4 md:px-[30px] pb-12 relative -mt-8 z-10">
+        <div id="similar-grid" class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+</div>
+
+<!-- ============ LIGHTBOX MODAL ============ -->
+<div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 hidden items-center justify-center p-4" onclick="closeLightbox()">
+    <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10 p-2" aria-label="Close lightbox">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="relative max-w-[90vw] max-h-[90vh] w-full h-full flex items-center justify-center" onclick="event.stopPropagation()">
+        <img id="lightbox-img" src="" alt="Property image" class="object-contain max-w-full max-h-full"/>
+        <button onclick="event.stopPropagation(); galleryPrev(); updateLightbox()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-4 rounded-full transition-all z-10" aria-label="Previous image">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button onclick="event.stopPropagation(); galleryNext(); updateLightbox()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-4 rounded-full transition-all z-10" aria-label="Next image">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="lightbox-counter" class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm"></div>
+    </div>
+</div>
+
+<!-- ============ ERROR STATE ============ -->
+<div id="detail-error" class="hidden max-w-[1280px] mx-auto px-4 md:px-[30px] py-20 text-center">
+    <h2 class="text-[#02033b] text-[28px] font-bold mb-4" data-i18n="details.notFound">{% trans "Immobile non trovato" %}</h2>
+    <a href="/" class="text-[#02033b] underline hover:opacity-80" data-i18n="details.backToHomepage">{% trans "Torna alla homepage" %}</a>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function() {
+    /* ── State ── */
+    var PROPERTY_ID = '{{ property_id }}';
+    var allImages = [];
+    window.galleryState = { current: 0 };
+
+    /* ── i18n helper ── */
+    function t(key) {
+        return window.gardablickI18n ? window.gardablickI18n.t(key) : key;
+    }
+    function getLang() {
+        try { var s = localStorage.getItem('gardablick_locale'); if (s) return s; } catch(e) {}
+        return 'it';
+    }
+
+    /* ── Safe DOM helpers ── */
+    function createEl(tag, className, text) {
+        var el = document.createElement(tag);
+        if (className) el.className = className;
+        if (text) el.textContent = text;
+        return el;
+    }
+    function createImg(src, alt, className, width, height) {
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = alt || '';
+        if (className) img.className = className;
+        if (width) img.width = width;
+        if (height) img.height = height;
+        return img;
+    }
+
+    /* ── Gallery ── */
+    window.galleryNext = function() {
+        galleryState.current = (galleryState.current + 1) % allImages.length;
+        updateMainImage();
+    };
+    window.galleryPrev = function() {
+        galleryState.current = (galleryState.current - 1 + allImages.length) % allImages.length;
+        updateMainImage();
+    };
+    function updateMainImage() {
+        var img = document.getElementById('gallery-main-img');
+        if (img && allImages[galleryState.current]) {
+            img.src = allImages[galleryState.current];
+        }
+    }
+
+    /* ── Lightbox ── */
+    window.openLightbox = function(index) {
+        galleryState.current = index;
+        var lb = document.getElementById('lightbox');
+        lb.classList.remove('hidden');
+        lb.classList.add('flex');
+        updateLightbox();
+        document.body.style.overflow = 'hidden';
+    };
+    window.closeLightbox = function() {
+        var lb = document.getElementById('lightbox');
+        lb.classList.add('hidden');
+        lb.classList.remove('flex');
+        document.body.style.overflow = '';
+    };
+    window.updateLightbox = function() {
+        var img = document.getElementById('lightbox-img');
+        var counter = document.getElementById('lightbox-counter');
+        if (img) img.src = allImages[galleryState.current] || '';
+        if (counter) counter.textContent = (galleryState.current + 1) + ' / ' + allImages.length;
+    };
+
+    /* Keyboard navigation */
+    document.addEventListener('keydown', function(e) {
+        var lb = document.getElementById('lightbox');
+        if (!lb || lb.classList.contains('hidden')) return;
+        if (e.key === 'Escape') closeLightbox();
+        else if (e.key === 'ArrowLeft') { galleryPrev(); updateLightbox(); }
+        else if (e.key === 'ArrowRight') { galleryNext(); updateLightbox(); }
+    });
+
+    /* ── Characteristics builder (safe DOM) ── */
+    function buildCharacteristics(prop) {
+        var iconBase = '{% static "gardablick/images/details/details-icons/" %}';
+        var items = [
+            { label: t('details.reference'), value: prop.ref, icon: null },
+            { label: t('details.commercialArea'), value: prop.commercial_area, icon: iconBase + 'Metri quadri commerciali.png' },
+            { label: t('details.netArea'), value: prop.net_area, icon: iconBase + 'Metri quadri netti.png' },
+            { label: t('details.bedrooms'), value: prop.bedrooms != null ? String(prop.bedrooms) : '', icon: iconBase + 'Camere.png' },
+            { label: t('details.bathrooms'), value: prop.bathrooms != null ? String(prop.bathrooms) : '', icon: iconBase + 'Bagni.png' },
+            { label: t('details.rooms'), value: prop.total_rooms != null ? String(prop.total_rooms) : '', icon: iconBase + 'Locali.png' },
+            { label: t('details.energyClass'), value: prop.energy_class, icon: iconBase + 'Classe energetica.png' },
+            { label: t('details.condominiumFees'), value: prop.condominium_fees, icon: iconBase + 'Spese condominiali.png' }
+        ];
+
+        var container = document.getElementById('prop-characteristics');
+        container.textContent = '';
+        items.forEach(function(item) {
+            if (!item.value) return;
+            var row = createEl('div', 'flex items-center justify-between py-2 border-b border-gray-200 last:border-b-0');
+
+            var left = createEl('div', 'flex items-center gap-3');
+            if (item.icon) {
+                left.appendChild(createImg(item.icon, item.label, 'object-contain', 20, 20));
+            }
+            var labelSpan = createEl('span', 'text-[#02033b] text-[16px] font-light', item.label + ':');
+            left.appendChild(labelSpan);
+
+            var valueSpan = createEl('span', 'text-[#02033b] text-[16px] font-medium', item.value);
+
+            row.appendChild(left);
+            row.appendChild(valueSpan);
+            container.appendChild(row);
+        });
+    }
+
+    /* ── Gallery thumbnails builder (safe DOM) ── */
+    function buildThumbnails(images) {
+        var container = document.getElementById('gallery-thumbs');
+        container.textContent = '';
+        var thumbImages = images.slice(1);
+        thumbImages.slice(0, 4).forEach(function(src, index) {
+            var div = createEl('div', 'relative h-[110px] rounded-lg overflow-hidden cursor-pointer border-2 border-transparent hover:border-gray-300 transition-all');
+            div.appendChild(createImg(src, 'Gallery image ' + (index + 1), 'object-cover absolute inset-0 w-full h-full'));
+
+            if (index === 2) {
+                var overlay = createEl('div', 'absolute inset-0 bg-black/40 flex items-center justify-center');
+                overlay.appendChild(createEl('span', 'text-white text-[12px] font-medium', 'Planimetria >'));
+                div.appendChild(overlay);
+            }
+            if (index === 3 && images.length > 5) {
+                var overlay2 = createEl('div', 'absolute inset-0 bg-black/40 flex items-center justify-center');
+                overlay2.appendChild(createEl('span', 'text-white text-[12px] font-medium', '+' + (images.length - 5) + ' Foto >'));
+                div.appendChild(overlay2);
+            }
+
+            var imgIndex = index + 1;
+            div.addEventListener('click', function() {
+                galleryState.current = imgIndex;
+                updateMainImage();
+                openLightbox(imgIndex);
+            });
+            container.appendChild(div);
+        });
+    }
+
+    /* ── Similar properties (safe DOM) ── */
+    function loadSimilarProperties() {
+        var lang = getLang();
+        fetch('/api/properties/?lang=' + encodeURIComponent(lang))
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                var results = (data.results || []).filter(function(p) {
+                    return String(p.id) !== PROPERTY_ID;
+                }).slice(0, 3);
+                if (results.length === 0) return;
+
+                var section = document.getElementById('similar-section');
+                var grid = document.getElementById('similar-grid');
+                section.classList.remove('hidden');
+                grid.textContent = '';
+
+                var bedIconSrc = '{% static "gardablick/images/pageicon/bed.png" %}';
+                var bathIconSrc = '{% static "gardablick/images/pageicon/besin.png" %}';
+                var areaIconSrc = '{% static "gardablick/images/bd4a3b52e27c0286e07f8577f70881be8d989929.svg" %}';
+                var locationIconSrc = '{% static "gardablick/images/pageicon/map.png" %}';
+
+                results.forEach(function(p) {
+                    var card = document.createElement('a');
+                    card.href = '/details/' + p.id + '/';
+                    card.className = 'rounded-[6px] overflow-hidden hover:shadow-lg transition-shadow bg-white shadow-sm';
+
+                    /* Image container */
+                    var imgWrap = createEl('div', 'relative h-[241px] w-full');
+                    imgWrap.appendChild(createImg(p.image || '', p.title || '', 'object-cover absolute inset-0 w-full h-full'));
+                    card.appendChild(imgWrap);
+
+                    /* Details container */
+                    var details = createEl('div', 'p-4');
+
+                    /* Title */
+                    var title = createEl('h3', 'text-[#02033b] text-[16px] font-normal mb-3 line-clamp-2 min-h-[48px]', p.title || '');
+                    details.appendChild(title);
+
+                    /* Price + Location row */
+                    var row1 = createEl('div', 'flex items-center justify-between mb-3');
+                    var price = createEl('p', 'text-[#02033b] text-[20px] font-bold underline', p.price || '');
+                    row1.appendChild(price);
+                    var locWrap = createEl('div', 'flex items-center gap-2');
+                    locWrap.appendChild(createImg(locationIconSrc, 'Location', '', 16, 16));
+                    locWrap.appendChild(createEl('span', 'text-[#02033b] text-[16px] font-light', p.location || ''));
+                    row1.appendChild(locWrap);
+                    details.appendChild(row1);
+
+                    /* Ref + Icons row */
+                    var row2 = createEl('div', 'flex items-center justify-between');
+                    row2.appendChild(createEl('span', 'text-[#02033b] text-[14px] font-light', p.ref || ''));
+                    var icons = createEl('div', 'flex items-center gap-3');
+
+                    function addIcon(iconSrc, alt, value) {
+                        var wrap = createEl('div', 'flex items-center gap-1');
+                        wrap.appendChild(createImg(iconSrc, alt, '', 16, 16));
+                        wrap.appendChild(createEl('span', 'text-[#02033b] text-[12px] font-light', String(value || 0)));
+                        icons.appendChild(wrap);
+                    }
+                    addIcon(areaIconSrc, 'Area', p.area || '');
+                    addIcon(bedIconSrc, 'Bedrooms', p.bedrooms || 0);
+                    addIcon(bathIconSrc, 'Bathrooms', p.bathrooms || 0);
+
+                    row2.appendChild(icons);
+                    details.appendChild(row2);
+                    card.appendChild(details);
+                    grid.appendChild(card);
+                });
+            })
+            .catch(function() { /* silently fail */ });
+    }
+
+    /* ── Load property data ── */
+    function loadProperty() {
+        var lang = getLang();
+        fetch('/api/properties/' + encodeURIComponent(PROPERTY_ID) + '/?lang=' + encodeURIComponent(lang))
+            .then(function(r) {
+                if (!r.ok) throw new Error('Not found');
+                return r.json();
+            })
+            .then(function(prop) {
+                /* Hide skeleton, show content */
+                document.getElementById('detail-skeleton').classList.add('hidden');
+                document.getElementById('detail-content').classList.remove('hidden');
+
+                /* Title, location, price */
+                document.getElementById('prop-title').textContent = prop.title || '';
+                document.getElementById('prop-location').textContent = prop.location || '';
+                document.getElementById('prop-price').textContent = prop.price || '';
+
+                /* Gallery */
+                allImages = [prop.main_image].concat(prop.gallery_images || []).filter(Boolean);
+                galleryState.current = 0;
+                updateMainImage();
+                buildThumbnails(allImages);
+
+                /* Description */
+                document.getElementById('prop-description').textContent = prop.description || '';
+
+                /* Composition */
+                var compList = document.getElementById('prop-composition');
+                compList.textContent = '';
+                var composition = prop.composition || [];
+                if (typeof composition === 'string') {
+                    composition = composition.split('\n').filter(function(s) { return s.trim(); });
+                }
+                composition.forEach(function(item) {
+                    var li = createEl('li', 'flex items-start gap-3');
+                    li.appendChild(createEl('span', 'text-[#02033b] mt-2', '\u2022'));
+                    li.appendChild(createEl('span', 'text-[#02033b] text-[16px] font-light leading-relaxed', item));
+                    compList.appendChild(li);
+                });
+
+                /* Composition note */
+                if (prop.composition_note) {
+                    var cn = document.getElementById('prop-composition-note');
+                    cn.textContent = prop.composition_note;
+                    cn.classList.remove('hidden');
+                }
+                /* Location note */
+                if (prop.location_note) {
+                    var ln = document.getElementById('prop-location-note');
+                    ln.textContent = prop.location_note;
+                    ln.classList.remove('hidden');
+                }
+
+                /* Characteristics */
+                buildCharacteristics(prop);
+
+                /* Map */
+                if (prop.map_location && prop.map_location.lat && prop.map_location.lng) {
+                    var mapSection = document.getElementById('prop-map-section');
+                    mapSection.classList.remove('hidden');
+                    var lat = encodeURIComponent(prop.map_location.lat);
+                    var lng = encodeURIComponent(prop.map_location.lng);
+                    document.getElementById('prop-map-iframe').src = 'https://www.google.com/maps?q=' + lat + ',' + lng + '&z=15&output=embed';
+                    document.getElementById('prop-map-link').href = 'https://www.google.com/maps?q=' + lat + ',' + lng;
+                }
+
+                /* Property ref for contact form */
+                document.getElementById('form-property-ref').value = prop.ref || '';
+
+                /* Share links */
+                document.getElementById('share-whatsapp').onclick = function() {
+                    window.open('https://wa.me/?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank');
+                };
+                document.getElementById('share-link').onclick = function() {
+                    if (navigator.share) {
+                        navigator.share({ title: prop.title, url: window.location.href });
+                    } else if (navigator.clipboard) {
+                        navigator.clipboard.writeText(window.location.href);
+                    }
+                };
+
+                /* Update page title */
+                document.title = (prop.title || 'Dettaglio Immobile') + ' | Gardablick';
+
+                /* Load similar properties */
+                loadSimilarProperties();
+            })
+            .catch(function() {
+                document.getElementById('detail-skeleton').classList.add('hidden');
+                document.getElementById('detail-error').classList.remove('hidden');
+            });
+    }
+
+    /* ── Contact form submission ── */
+    var form = document.getElementById('detail-contact-form');
+    var successMsg = document.getElementById('detail-contact-success');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var btn = form.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.querySelector('span').textContent = '...';
+
+            var formData = new FormData(form);
+            var data = {
+                first_name: formData.get('nome'),
+                last_name: formData.get('cognome'),
+                email: formData.get('email'),
+                phone: formData.get('telefono') || '',
+                message: formData.get('messaggio'),
+                privacy_accepted: formData.get('privacy') === 'on',
+                updates_accepted: formData.get('updates') === 'on',
+                source: 'property',
+                property_ref: formData.get('property_ref') || ''
+            };
+
+            fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+                },
+                body: JSON.stringify(data)
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    successMsg.classList.remove('hidden');
+                    form.reset();
+                    /* Restore property_ref */
+                    var refInput = document.getElementById('form-property-ref');
+                    if (refInput) refInput.value = data.property_ref;
+                }
+            })
+            .catch(function() { /* silently handle */ })
+            .finally(function() {
+                btn.disabled = false;
+                btn.querySelector('span').textContent = t('details.sendMessage') || '{% trans "Invia messaggio" %}';
+            });
+        });
+    }
+
+    /* ── Init ── */
+    loadProperty();
+})();
+</script>
+{% endblock %}

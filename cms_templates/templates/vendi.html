@@ -1,0 +1,314 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Vuoi vendere la tua casa?" %}{% endblock %}
+
+{% block content %}
+<!-- ============ HERO SECTION ============ -->
+<section class="relative h-[500px] md:h-[600px] w-full overflow-hidden">
+    <div class="absolute inset-0">
+        <img alt="{% trans "Vuoi vendere la tua casa?" %}" class="object-cover" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/vuoi/hero.png' %}"/>
+        <div class="absolute inset-0 bg-[#02033b] opacity-40"></div>
+    </div>
+    <div class="relative z-10 h-full flex flex-col items-start justify-end max-w-[1280px] mx-auto px-4 md:px-[30px] pb-8 md:pb-12">
+        <h1 class="text-white uppercase text-[32px] md:text-[48px] lg:text-[56px] font-medium tracking-[-0.1354px] leading-[1.2]" data-i18n="vendi.heroTitle">
+            {% trans "Vuoi vendere la tua casa?" %}
+        </h1>
+    </div>
+</section>
+
+<!-- ============ INTRO SECTION ============ -->
+<section class="bg-white py-16 md:py-24 px-4 md:px-[30px]">
+    <div class="max-w-[1280px] mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Left Column - Text Content -->
+            <div>
+                <p class="text-[rgba(2,3,59,0.5)] text-[16px] font-medium mb-2 uppercase" data-i18n="vendi.introSubtitle">
+                    {% trans "I Nostri Servizi" %}
+                </p>
+                <h2 class="text-[#02033b] uppercase text-[28px] md:text-[36px] lg:text-[40px] font-medium tracking-[-0.1466px] mb-6 leading-[1.2]" data-i18n="vendi.introHeading">
+                    {% trans "VENDI LA TUA CASA IN MODO EFFICACE E TRASPARENTE" %}
+                </h2>
+                <p class="text-[#727272] text-[16px] font-normal leading-[1.6] tracking-[-0.1712px] mb-8" data-i18n="vendi.introDescription">
+                    {% trans "Ogni immobile ha una storia unica. Il nostro compito è valorizzarla al massimo. Analizziamo ogni dettaglio della tua proprietà e ti forniamo una valutazione precisa e personalizzata, completamente gratuita e senza alcun impegno. Da qui parte un percorso chiaro, guidato e costruito su misura per te." %}
+                </p>
+                <a href="#contact-form" class="inline-flex items-center gap-2 bg-[#02033b] text-white px-8 md:px-12 py-4 md:py-5 rounded-[8px] font-medium text-[16px] md:text-[18px] uppercase tracking-[-0.08px] hover:opacity-90 transition-opacity mb-4">
+                    <span data-i18n="vendi.requestValuation">{% trans "Richiedi la valutazione gratuita" %}</span>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 6H11M11 6L6 1M11 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </a>
+                <div>
+                    <a href="#services" class="inline-flex items-center gap-2 text-[#727272] text-[16px] font-medium hover:opacity-80 transition-opacity">
+                        <span data-i18n="vendi.howItWorks">{% trans "Scopri come funziona" %}</span>
+                        <img alt="" loading="lazy" width="9" height="5" class="rotate-[-90deg]" style="color:transparent" src="{% static 'gardablick/images/312183a2cf6164b0db97392c348dbdc6033badac.svg' %}"/>
+                    </a>
+                </div>
+            </div>
+            <!-- Right Column - Image -->
+            <div class="relative h-[400px] md:h-[500px] w-full rounded-[14px] overflow-hidden shadow-lg">
+                <img alt="{% trans "Vendi la tua casa" %}" loading="lazy" class="object-cover" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/vuoi/Vendi la tua casa in MODO.png' %}"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ SERVICES TIMELINE SECTION ============ -->
+<section id="services" class="bg-white py-16 md:py-24 px-4 md:px-[30px]">
+    <div class="max-w-[1280px] mx-auto">
+        <div class="relative">
+            <!-- Central Vertical Line -->
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-[3px] h-full bg-gray-400 hidden md:block"></div>
+
+            <!-- Central Icon at Top -->
+            <div class="flex justify-center mb-12 md:mb-16">
+                <div class="relative w-[80px] h-[80px] md:w-[100px] md:h-[100px] bg-white border-2 border-[#02033b] rounded-full flex items-center justify-center z-10 p-4">
+                    <div class="relative w-[50px] h-[50px] md:w-[60px] md:h-[60px]">
+                        <img alt="Home icon" loading="lazy" width="50" height="50" class="object-contain w-full h-full" style="color:transparent" src="{% static 'gardablick/images/vuoi/home-icon.png' %}"/>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Cards -->
+            <div class="space-y-8 md:space-y-12">
+
+                <!-- Service 1 - Left: Analisi su misura -->
+                <div class="relative flex flex-col md:flex-row items-start gap-6 md:gap-8 md:flex-row">
+                    <div class="w-full md:w-[45%] md:mr-auto bg-[#FAFAFA] border border-gray-200 rounded-[14px] p-6 md:p-8">
+                        <div class="flex items-center gap-3 md:gap-4 mb-4">
+                            <div class="relative w-[50px] h-[50px] md:w-[60px] md:h-[60px] flex-shrink-0">
+                                <div class="w-full h-full border-2 border-[#02033b] rounded-full flex items-center justify-center bg-white">
+                                    <img alt="{% trans "Analisi su misura" %}" loading="lazy" width="30" height="30" class="object-contain" style="color:transparent" src="{% static 'gardablick/images/vuoi/Analisi su misura.png' %}"/>
+                                </div>
+                            </div>
+                            <h3 class="text-[#02033b] uppercase text-[18px] md:text-[24px] font-medium tracking-[-0.1466px]" data-i18n="vendi.service1Title">
+                                {% trans "ANALISI SU MISURA" %}
+                            </h3>
+                        </div>
+                        <p class="text-[#727272] text-[14px] md:text-[16px] font-normal leading-[1.6] tracking-[-0.1712px]" data-i18n="vendi.service1Desc">
+                            {% trans "Valutiamo la tua proprietà con un'analisi approfondita del mercato locale, delle caratteristiche dell'immobile e delle tendenze attuali per determinare il prezzo ottimale di vendita." %}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 2 - Right: Strategia di vendita personalizzata -->
+                <div class="relative flex flex-col md:flex-row items-start gap-6 md:gap-8 md:flex-row-reverse">
+                    <div class="w-full md:w-[45%] md:ml-auto bg-[#FAFAFA] border border-gray-200 rounded-[14px] p-6 md:p-8">
+                        <div class="flex items-center gap-3 md:gap-4 mb-4">
+                            <div class="relative w-[50px] h-[50px] md:w-[60px] md:h-[60px] flex-shrink-0">
+                                <div class="w-full h-full border-2 border-[#02033b] rounded-full flex items-center justify-center bg-white">
+                                    <img alt="{% trans "Strategia di vendita personalizzata" %}" loading="lazy" width="30" height="30" class="object-contain" style="color:transparent" src="{% static 'gardablick/images/vuoi/Strategia di vendita personalizzata.png' %}"/>
+                                </div>
+                            </div>
+                            <h3 class="text-[#02033b] uppercase text-[18px] md:text-[24px] font-medium tracking-[-0.1466px]" data-i18n="vendi.service2Title">
+                                {% trans "STRATEGIA DI VENDITA PERSONALIZZATA" %}
+                            </h3>
+                        </div>
+                        <p class="text-[#727272] text-[14px] md:text-[16px] font-normal leading-[1.6] tracking-[-0.1712px]" data-i18n="vendi.service2Desc">
+                            {% trans "Sviluppiamo una strategia di vendita su misura per la tua proprietà, considerando le tue esigenze e gli obiettivi di vendita per massimizzare i risultati." %}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 3 - Left: Presentazione professionale -->
+                <div class="relative flex flex-col md:flex-row items-start gap-6 md:gap-8 md:flex-row">
+                    <div class="w-full md:w-[45%] md:mr-auto bg-[#FAFAFA] border border-gray-200 rounded-[14px] p-6 md:p-8">
+                        <div class="flex items-center gap-3 md:gap-4 mb-4">
+                            <div class="relative w-[50px] h-[50px] md:w-[60px] md:h-[60px] flex-shrink-0">
+                                <div class="w-full h-full border-2 border-[#02033b] rounded-full flex items-center justify-center bg-white">
+                                    <img alt="{% trans "Presentazione professionale" %}" loading="lazy" width="30" height="30" class="object-contain" style="color:transparent" src="{% static 'gardablick/images/vuoi/Presentazione professionale.png' %}"/>
+                                </div>
+                            </div>
+                            <h3 class="text-[#02033b] uppercase text-[18px] md:text-[24px] font-medium tracking-[-0.1466px]" data-i18n="vendi.service3Title">
+                                {% trans "PRESENTAZIONE PROFESSIONALE" %}
+                            </h3>
+                        </div>
+                        <p class="text-[#727272] text-[14px] md:text-[16px] font-normal leading-[1.6] tracking-[-0.1712px]" data-i18n="vendi.service3Desc">
+                            {% trans "Creiamo materiali promozionali di alta qualità, inclusi servizi fotografici professionali, video tour e descrizioni dettagliate per valorizzare la tua proprietà." %}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 4 - Right: Gestione dei contatti -->
+                <div class="relative flex flex-col md:flex-row items-start gap-6 md:gap-8 md:flex-row-reverse">
+                    <div class="w-full md:w-[45%] md:ml-auto bg-[#FAFAFA] border border-gray-200 rounded-[14px] p-6 md:p-8">
+                        <div class="flex items-center gap-3 md:gap-4 mb-4">
+                            <div class="relative w-[50px] h-[50px] md:w-[60px] md:h-[60px] flex-shrink-0">
+                                <div class="w-full h-full border-2 border-[#02033b] rounded-full flex items-center justify-center bg-white">
+                                    <img alt="{% trans "Gestione dei contatti" %}" loading="lazy" width="30" height="30" class="object-contain" style="color:transparent" src="{% static 'gardablick/images/vuoi/Gestione dei contatti.png' %}"/>
+                                </div>
+                            </div>
+                            <h3 class="text-[#02033b] uppercase text-[18px] md:text-[24px] font-medium tracking-[-0.1466px]" data-i18n="vendi.service4Title">
+                                {% trans "GESTIONE DEI CONTATTI E DELLE VISITE" %}
+                            </h3>
+                        </div>
+                        <p class="text-[#727272] text-[14px] md:text-[16px] font-normal leading-[1.6] tracking-[-0.1712px]" data-i18n="vendi.service4Desc">
+                            {% trans "Gestiamo tutti i contatti dei potenziali acquirenti, organizziamo le visite guidate e ti teniamo aggiornato su ogni interesse manifestato per la tua proprietà." %}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 5 - Left: Vendita sicura e gestione completa -->
+                <div class="relative flex flex-col md:flex-row items-start gap-6 md:gap-8 md:flex-row">
+                    <div class="w-full md:w-[45%] md:mr-auto bg-[#FAFAFA] border border-gray-200 rounded-[14px] p-6 md:p-8">
+                        <div class="flex items-center gap-3 md:gap-4 mb-4">
+                            <div class="relative w-[50px] h-[50px] md:w-[60px] md:h-[60px] flex-shrink-0">
+                                <div class="w-full h-full border-2 border-[#02033b] rounded-full flex items-center justify-center bg-white">
+                                    <img alt="{% trans "Vendita sicura e gestione completa" %}" loading="lazy" width="30" height="30" class="object-contain" style="color:transparent" src="{% static 'gardablick/images/vuoi/Vendita sicura e gestione completa.png' %}"/>
+                                </div>
+                            </div>
+                            <h3 class="text-[#02033b] uppercase text-[18px] md:text-[24px] font-medium tracking-[-0.1466px]" data-i18n="vendi.service5Title">
+                                {% trans "VENDITA SICURA E GESTIONE COMPLETA" %}
+                            </h3>
+                        </div>
+                        <p class="text-[#727272] text-[14px] md:text-[16px] font-normal leading-[1.6] tracking-[-0.1712px]" data-i18n="vendi.service5Desc">
+                            {% trans "Ti accompagniamo fino alla firma dell'atto notarile, gestendo tutta la documentazione necessaria e garantendo una vendita sicura e trasparente." %}
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CONTACT FORM SECTION ============ -->
+<section id="contact-form" class="bg-[#02033b] py-16 md:py-24 px-4 md:px-[30px]">
+    <div class="max-w-[1280px] mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <!-- Left Side - Title -->
+            <div>
+                <h2 class="text-white uppercase text-[32px] md:text-[48px] font-medium tracking-[-0.1354px] leading-[1.2] mb-6" data-i18n="vendi.formTitle">
+                    {% trans "RICHIESTA DI VENDITA" %}
+                </h2>
+                <p class="text-white/80 text-[16px] md:text-[18px] font-normal leading-[1.6]" data-i18n="vendi.formDescription">
+                    {% trans "Compila il modulo per richiedere una valutazione gratuita della tua proprietà. Il nostro team ti contatterà al più presto." %}
+                </p>
+            </div>
+
+            <!-- Right Side - Form -->
+            <div>
+                <div id="form-success-message" class="mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-[8px] hidden">
+                    <p class="text-green-400 text-[16px] font-medium" data-i18n="contact.successMessage">{% trans "Messaggio inviato con successo!" %}</p>
+                </div>
+                <form method="post" action="/api/contact/" class="space-y-6" id="vendi-contact-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="source" value="vendi"/>
+
+                    <!-- Nome -->
+                    <div>
+                        <label for="nome" class="block text-white text-[14px] md:text-[16px] font-medium mb-2" data-i18n="vendi.firstName">{% trans "Nome*" %}</label>
+                        <input type="text" id="nome" name="nome" required class="w-full bg-transparent border border-white/30 rounded-[8px] px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors" placeholder="{% trans "Inserisci il tuo nome" %}" data-i18n-placeholder="vendi.firstNamePlaceholder"/>
+                    </div>
+
+                    <!-- Cognome -->
+                    <div>
+                        <label for="cognome" class="block text-white text-[14px] md:text-[16px] font-medium mb-2" data-i18n="vendi.lastName">{% trans "Cognome*" %}</label>
+                        <input type="text" id="cognome" name="cognome" required class="w-full bg-transparent border border-white/30 rounded-[8px] px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors" placeholder="{% trans "Inserisci il tuo cognome" %}" data-i18n-placeholder="vendi.lastNamePlaceholder"/>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="block text-white text-[14px] md:text-[16px] font-medium mb-2" data-i18n="vendi.email">{% trans "Email*" %}</label>
+                        <input type="email" id="email" name="email" required class="w-full bg-transparent border border-white/30 rounded-[8px] px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors" placeholder="{% trans "Inserisci la tua email" %}" data-i18n-placeholder="vendi.emailPlaceholder"/>
+                    </div>
+
+                    <!-- Telefono -->
+                    <div>
+                        <label for="telefono" class="block text-white text-[14px] md:text-[16px] font-medium mb-2" data-i18n="vendi.phone">{% trans "Telefono" %}</label>
+                        <input type="tel" id="telefono" name="telefono" class="w-full bg-transparent border border-white/30 rounded-[8px] px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors" placeholder="{% trans "Inserisci il tuo telefono" %}" data-i18n-placeholder="vendi.phonePlaceholder"/>
+                    </div>
+
+                    <!-- Messaggio -->
+                    <div>
+                        <label for="messaggio" class="block text-white text-[14px] md:text-[16px] font-medium mb-2" data-i18n="vendi.message">{% trans "Messaggio*" %}</label>
+                        <textarea id="messaggio" name="messaggio" required rows="5" class="w-full bg-transparent border border-white/30 rounded-[8px] px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors resize-none" placeholder="{% trans "Descrivi la tua proprietà o le tue esigenze" %}" data-i18n-placeholder="vendi.messagePlaceholder"></textarea>
+                    </div>
+
+                    <!-- Checkboxes -->
+                    <div class="space-y-3">
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" name="privacy" required class="mt-1 w-4 h-4 border-white/30 rounded focus:ring-2 focus:ring-white/50"/>
+                            <span class="text-white text-[14px] md:text-[16px] font-normal"><span data-i18n="vendi.privacyConsent">{% trans "Accetto l'informativa sulla" %}</span> <a class="underline hover:opacity-80" target="_blank" href="/privacy-policy">privacy policy</a>*</span>
+                        </label>
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" name="updates" class="mt-1 w-4 h-4 border-white/30 rounded focus:ring-2 focus:ring-white/50"/>
+                            <span class="text-white text-[14px] md:text-[16px] font-normal" data-i18n="vendi.updatesConsent">
+                                {% trans "Sì, desidero ricevere aggiornamenti e offerte" %}
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full bg-white text-[#02033b] px-8 py-4 rounded-[8px] font-medium text-[16px] md:text-[18px] uppercase tracking-[-0.08px] hover:opacity-90 transition-opacity disabled:opacity-50">
+                        <span data-i18n="vendi.submitRequest">{% trans "Invia la richiesta" %}</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CTA SECTION ============ -->
+<section class="bg-white py-12 px-4 md:px-[30px]">
+    <div class="max-w-[1280px] mx-auto flex justify-center">
+        <a class="bg-[#02033b] text-white px-8 md:px-12 py-4 md:py-5 rounded-[8px] font-medium text-[16px] md:text-[18px] uppercase tracking-[-0.08px] hover:opacity-90 transition-opacity inline-flex items-center gap-3" href="{% url 'servizi' %}">
+            <span data-i18n="vendi.discoverServices">{% trans "Scopri i nostri servizi" %}</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 6H11M11 6L6 1M11 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </a>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function() {
+    var form = document.getElementById('vendi-contact-form');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.textContent = '...';
+
+        var formData = new FormData(form);
+        var data = {
+            first_name: formData.get('nome'),
+            last_name: formData.get('cognome'),
+            email: formData.get('email'),
+            phone: formData.get('telefono') || '',
+            message: formData.get('messaggio'),
+            privacy_accepted: formData.get('privacy') === 'on',
+            updates_accepted: formData.get('updates') === 'on',
+            source: 'vendi'
+        };
+
+        var csrfToken = formData.get('csrfmiddlewaretoken');
+
+        fetch('/api/contact/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify(data)
+        })
+        .then(function(response) {
+            if (response.ok) {
+                var successMsg = document.getElementById('form-success-message');
+                if (successMsg) {
+                    successMsg.classList.remove('hidden');
+                }
+                form.reset();
+            }
+        })
+        .catch(function(err) {
+            console.error('Failed to submit:', err);
+        })
+        .finally(function() {
+            btn.disabled = false;
+            var sp = btn.querySelector('span'); if (sp) sp.textContent = window.gardablickI18n ? window.gardablickI18n.t('vendi.submitRequest') : '{% trans "Invia la richiesta" %}';
+        });
+    });
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,397 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Immobili" %}{% endblock %}
+
+{% block content %}
+<!-- ============ HERO SECTION ============ -->
+<section class="relative h-[600px] md:h-[754px] w-full overflow-hidden">
+    <div class="absolute inset-0">
+        <img alt="Lake Garda" class="object-cover" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="{% static 'gardablick/images/lisitng-hero.png' %}"/>
+        <div class="absolute inset-0 bg-black/20"></div>
+    </div>
+    <div class="relative z-10 h-full flex flex-col items-start justify-end max-w-[1280px] mx-auto px-4 md:px-[30px] pb-8 md:pb-16">
+        <h1 class="text-white text-[48px] md:text-[64px] font-medium leading-tight tracking-tight drop-shadow-lg" style="text-shadow: 0 2px 8px rgba(0,0,0,0.3)">
+            <span class="block" data-i18n="listings.heroTitle1">{% trans "Trova la tua casa" %}</span>
+            <span class="block" data-i18n="listings.heroTitle2">{% trans "sul Lago di Garda" %}</span>
+        </h1>
+    </div>
+</section>
+
+<!-- ============ SEARCH FILTER SECTION ============ -->
+<section class="bg-white py-8 px-4 md:px-[30px]">
+    <div class="max-w-[1280px] mx-auto">
+        <div class="flex flex-wrap gap-4 items-center">
+            <!-- Municipality -->
+            <div class="flex-1 min-w-[200px]">
+                <div class="relative bg-white border border-[#02033b]/20 rounded-[8px] h-[55px] flex items-center px-4">
+                    <select id="filter-municipality" class="flex-1 bg-transparent border-none outline-none text-[#02033b] text-[16px] font-normal appearance-none cursor-pointer">
+                        <option value="" data-i18n="filters.searchMunicipality">{% trans "Search Municipality" %}</option>
+                        <option value="all" data-i18n="filters.allMunicipalities">{% trans "All Municipalities" %}</option>
+                        <option value="Bardolino">Bardolino</option>
+                        <option value="Calvagese">Calvagese</option>
+                        <option value="Desenzano del Garda">Desenzano del Garda</option>
+                        <option value="Garda">Garda</option>
+                        <option value="Gardone Riviera">Gardone Riviera</option>
+                        <option value="Gargnano">Gargnano</option>
+                        <option value="Lazise">Lazise</option>
+                        <option value="Limone sul Garda">Limone sul Garda</option>
+                        <option value="Lonato">Lonato</option>
+                    </select>
+                    <div class="absolute right-4 pointer-events-none">
+                        <svg width="9" height="5" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L4.5 4L8 1" stroke="#02033b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </div>
+                </div>
+            </div>
+            <!-- Distance -->
+            <div class="flex-1 min-w-[200px]">
+                <div class="relative bg-white border border-[#02033b]/20 rounded-[8px] h-[55px] flex items-center px-4">
+                    <select id="filter-distance" class="flex-1 bg-transparent border-none outline-none text-[#02033b] text-[16px] font-normal appearance-none cursor-pointer">
+                        <option value="" data-i18n="filters.distanceKm">{% trans "Distance (km)" %}</option>
+                        <option value="all" data-i18n="filters.allDistances">{% trans "All Distances" %}</option>
+                        <option value="5" data-i18n="filters.within5km">{% trans "Within 5 km" %}</option>
+                        <option value="10" data-i18n="filters.within10km">{% trans "Within 10 km" %}</option>
+                        <option value="15" data-i18n="filters.within15km">{% trans "Within 15 km" %}</option>
+                        <option value="20" data-i18n="filters.within20km">{% trans "Within 20 km" %}</option>
+                    </select>
+                    <div class="absolute right-4 pointer-events-none">
+                        <svg width="9" height="5" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L4.5 4L8 1" stroke="#02033b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </div>
+                </div>
+            </div>
+            <!-- Price Range -->
+            <div class="flex-1 min-w-[200px]">
+                <div class="relative bg-white border border-[#02033b]/20 rounded-[8px] h-[55px] flex items-center px-4">
+                    <select id="filter-price" class="flex-1 bg-transparent border-none outline-none text-[#02033b] text-[16px] font-normal appearance-none cursor-pointer">
+                        <option value="" data-i18n="filters.priceRange">{% trans "Price Range" %}</option>
+                        <option value="all" data-i18n="filters.allPrices">{% trans "All Prices" %}</option>
+                        <option value="0-300000" data-i18n="filters.price0to300k">&euro; 0 - &euro; 300.000</option>
+                        <option value="300000-600000" data-i18n="filters.price300to600k">&euro; 300.000 - &euro; 600.000</option>
+                        <option value="600000-1000000" data-i18n="filters.price600kto1m">&euro; 600.000 - &euro; 1.000.000</option>
+                        <option value="1000000+" data-i18n="filters.priceOver1m">{% trans "Over" %} &euro; 1.000.000</option>
+                    </select>
+                    <div class="absolute right-4 pointer-events-none">
+                        <svg width="9" height="5" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L4.5 4L8 1" stroke="#02033b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </div>
+                </div>
+            </div>
+            <!-- Property Type -->
+            <div class="flex-1 min-w-[200px]">
+                <div class="relative bg-white border border-[#02033b]/20 rounded-[8px] h-[55px] flex items-center px-4">
+                    <select id="filter-type" class="flex-1 bg-transparent border-none outline-none text-[#02033b] text-[16px] font-normal appearance-none cursor-pointer">
+                        <option value="" data-i18n="filters.propertyType">{% trans "Property Type" %}</option>
+                        <option value="all" data-i18n="filters.allTypes">{% trans "All Types" %}</option>
+                        <option value="appartamento" data-i18n="filters.apartment">{% trans "Apartment" %}</option>
+                        <option value="attico" data-i18n="filters.penthouse">{% trans "Penthouse" %}</option>
+                        <option value="garage" data-i18n="filters.garage">{% trans "Garage" %}</option>
+                        <option value="casa-singola" data-i18n="filters.detachedHouse">{% trans "Detached House" %}</option>
+                        <option value="rustico" data-i18n="filters.farmhouse">{% trans "Farmhouse" %}</option>
+                        <option value="terreno" data-i18n="filters.buildingLand">{% trans "Building Land" %}</option>
+                        <option value="villa" data-i18n="filters.villas">{% trans "Villa" %}</option>
+                        <option value="villa-bifamiliare" data-i18n="filters.semiDetached">{% trans "Semi-Detached" %}</option>
+                        <option value="villa-schiera" data-i18n="filters.terraced">{% trans "Terraced" %}</option>
+                    </select>
+                    <div class="absolute right-4 pointer-events-none">
+                        <svg width="9" height="5" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L4.5 4L8 1" stroke="#02033b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </div>
+                </div>
+            </div>
+            <!-- Search Button -->
+            <button id="listing-search-btn" class="bg-[#02033b] text-white uppercase px-8 h-[55px] rounded-[8px] font-medium text-[16px] flex items-center justify-center hover:opacity-90 transition-opacity whitespace-nowrap">
+                <span data-i18n="filters.search">{% trans "SEARCH" %}</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- ============ PROPERTY LISTINGS SECTION ============ -->
+<section class="bg-white py-16 px-4 md:px-[30px]">
+    <div class="max-w-[1280px] mx-auto">
+        <!-- Header with Sort -->
+        <div class="flex items-center justify-between mb-12">
+            <h2 class="text-[#02033b] uppercase text-[32px] md:text-[40px] font-medium tracking-tight" data-i18n="listings.findYourHome">
+                {% trans "TROVA LA TUA CASA" %}
+            </h2>
+            <div class="relative" id="sort-dropdown-wrapper">
+                <div class="flex items-center gap-2 cursor-pointer" id="sort-dropdown-toggle">
+                    <span class="text-[#02033b] text-[16px] font-medium" id="sort-label" data-i18n="listings.mostRecent">{% trans "Most Recent" %}</span>
+                    <img src="{% static 'gardablick/images/0810bad3a962f2f445eeb4bb95b086aec593661a.svg' %}" alt="" width="9" height="5" id="sort-arrow"/>
+                </div>
+                <div class="absolute right-0 top-full mt-2 bg-white rounded-[6px] shadow-lg border border-gray-200 min-w-[200px] z-50 hidden" id="sort-menu">
+                    <button data-sort="most_recent" class="w-full text-left px-4 py-3 text-[16px] font-medium text-[#02033b] hover:bg-gray-50 transition-colors rounded-t-[6px]" data-i18n="listings.mostRecent">{% trans "Most Recent" %}</button>
+                    <button data-sort="price_asc" class="w-full text-left px-4 py-3 text-[16px] font-medium text-[#02033b] hover:bg-gray-50 transition-colors" data-i18n="listings.priceAscending">{% trans "Price Ascending" %}</button>
+                    <button data-sort="price_desc" class="w-full text-left px-4 py-3 text-[16px] font-medium text-[#02033b] hover:bg-gray-50 transition-colors" data-i18n="listings.priceDescending">{% trans "Price Descending" %}</button>
+                    <button data-sort="area_asc" class="w-full text-left px-4 py-3 text-[16px] font-medium text-[#02033b] hover:bg-gray-50 transition-colors" data-i18n="listings.areaAscending">{% trans "Area Ascending" %}</button>
+                    <button data-sort="area_desc" class="w-full text-left px-4 py-3 text-[16px] font-medium text-[#02033b] hover:bg-gray-50 transition-colors rounded-b-[6px]" data-i18n="listings.areaDescending">{% trans "Area Descending" %}</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Property Grid (populated by JS) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="property-grid"></div>
+
+        <!-- Pagination (populated by JS) -->
+        <div class="flex items-center justify-center gap-4 mt-12" id="pagination"></div>
+    </div>
+</section>
+
+<!-- Property card template (hidden, cloned by JS) -->
+<template id="property-card-tpl">
+    <a class="rounded-[6px] overflow-hidden hover:shadow-lg transition-shadow cursor-pointer block" style="background-color:#FAFAFA">
+        <div class="relative h-[241px] w-full">
+            <img alt="" class="object-cover" loading="lazy" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" data-field="image"/>
+        </div>
+        <div class="p-4">
+            <h3 class="text-[#02033b] text-[16px] font-normal mb-3 line-clamp-2 min-h-[48px]" data-field="title"></h3>
+            <div class="flex items-center justify-between mb-3">
+                <p class="text-[#02033b] text-[20px] font-bold underline" data-field="price"></p>
+                <div class="flex items-center gap-2">
+                    <img alt="" width="16" height="16" data-field="area-icon"/>
+                    <span class="text-[#02033b] text-[16px] font-light" data-field="location"></span>
+                </div>
+            </div>
+            <div class="flex items-center justify-between">
+                <span class="text-[#02033b] text-[14px] font-light" data-field="ref"></span>
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-1">
+                        <img alt="" width="16" height="16" class="object-contain" data-field="map-icon"/>
+                        <span class="text-[#02033b] text-[14px] font-light" data-field="area"></span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <img alt="" width="16" height="16" class="object-contain" data-field="bed-icon"/>
+                        <span class="text-[#02033b] text-[14px] font-light" data-field="bedrooms"></span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <img alt="" width="16" height="16" class="object-contain" data-field="bath-icon"/>
+                        <span class="text-[#02033b] text-[14px] font-light" data-field="bathrooms"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</template>
+
+<!-- Loading skeleton template -->
+<template id="skeleton-tpl">
+    <div class="rounded-[6px] overflow-hidden animate-pulse" style="background-color:#FAFAFA">
+        <div class="h-[241px] bg-gray-200"></div>
+        <div class="p-4 space-y-3">
+            <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+            <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+            <div class="h-4 bg-gray-200 rounded w-2/3"></div>
+        </div>
+    </div>
+</template>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function() {
+    var LANG = (function() { try { return localStorage.getItem('gardablick_locale') || 'it'; } catch(e) { return 'it'; } })();
+    var currentSort = 'most_recent';
+    var currentPage = 1;
+    var pageSize = 9;
+
+    var gridEl = document.getElementById('property-grid');
+    var paginationEl = document.getElementById('pagination');
+    var cardTpl = document.getElementById('property-card-tpl');
+    var skeletonTpl = document.getElementById('skeleton-tpl');
+
+    var ICONS = {
+        area: '{% static "gardablick/images/bd4a3b52e27c0286e07f8577f70881be8d989929.svg" %}',
+        map: '{% static "gardablick/images/pageicon/map.png" %}',
+        bed: '{% static "gardablick/images/pageicon/bed.png" %}',
+        bath: '{% static "gardablick/images/pageicon/besin.png" %}'
+    };
+
+    function getUrlParams() {
+        var params = new URLSearchParams(window.location.search);
+        return {
+            location: params.get('location') || '',
+            price_min: params.get('price_min') || '',
+            price_max: params.get('price_max') || '',
+            property_type: params.get('property_type') || ''
+        };
+    }
+
+    function initFiltersFromUrl() {
+        var p = getUrlParams();
+        if (p.location) document.getElementById('filter-municipality').value = p.location;
+        if (p.property_type) document.getElementById('filter-type').value = p.property_type;
+        if (p.price_min && p.price_max) {
+            document.getElementById('filter-price').value = p.price_min + '-' + p.price_max;
+        } else if (p.price_min && !p.price_max) {
+            document.getElementById('filter-price').value = '1000000+';
+        }
+    }
+
+    function buildApiUrl() {
+        var params = new URLSearchParams();
+        params.set('sort', currentSort);
+        params.set('lang', LANG);
+        params.set('page', currentPage);
+        params.set('page_size', pageSize);
+        var urlP = getUrlParams();
+        if (urlP.location) params.set('location', urlP.location);
+        if (urlP.price_min) params.set('price_min', urlP.price_min);
+        if (urlP.price_max) params.set('price_max', urlP.price_max);
+        if (urlP.property_type) params.set('property_type', urlP.property_type);
+        return '/api/properties/?' + params.toString();
+    }
+
+    function formatPrice(price) {
+        var num = parseFloat(price);
+        if (isNaN(num)) return String(price);
+        return '\u20AC ' + num.toLocaleString('it-IT', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+    }
+
+    function showSkeletons() {
+        gridEl.textContent = '';
+        for (var i = 0; i < 3; i++) {
+            gridEl.appendChild(skeletonTpl.content.cloneNode(true));
+        }
+    }
+
+    function createCard(p) {
+        var clone = cardTpl.content.cloneNode(true);
+        var link = clone.querySelector('a');
+        var title = (typeof p.title === 'object') ? (p.title[LANG] || p.title.it || '') : (p.title || '');
+        var img = p.image || p.main_image || '';
+
+        link.href = '/details/' + p.id;
+
+        var imgEl = clone.querySelector('[data-field="image"]');
+        imgEl.src = img;
+        imgEl.alt = title;
+
+        clone.querySelector('[data-field="title"]').textContent = title;
+        clone.querySelector('[data-field="price"]').textContent = formatPrice(p.price);
+        clone.querySelector('[data-field="area-icon"]').src = ICONS.area;
+        clone.querySelector('[data-field="location"]').textContent = p.location || '';
+        clone.querySelector('[data-field="ref"]').textContent = p.ref || '';
+        clone.querySelector('[data-field="map-icon"]').src = ICONS.map;
+        clone.querySelector('[data-field="area"]').textContent = p.area || '';
+        clone.querySelector('[data-field="bed-icon"]').src = ICONS.bed;
+        clone.querySelector('[data-field="bedrooms"]').textContent = String(p.bedrooms || 0);
+        clone.querySelector('[data-field="bath-icon"]').src = ICONS.bath;
+        clone.querySelector('[data-field="bathrooms"]').textContent = String(p.bathrooms || 0);
+
+        return clone;
+    }
+
+    function renderPagination(totalCount) {
+        paginationEl.textContent = '';
+        var totalPages = Math.ceil(totalCount / pageSize);
+        if (totalPages <= 1) return;
+
+        for (var i = 1; i <= totalPages; i++) {
+            var btn = document.createElement('button');
+            btn.textContent = String(i);
+            btn.setAttribute('data-page', String(i));
+            btn.className = 'w-10 h-10 rounded-full text-[16px] font-medium flex items-center justify-center transition-all ' +
+                (i === currentPage ? 'bg-[#02033b] text-white' : 'text-[#02033b] hover:bg-gray-100');
+            btn.addEventListener('click', function() {
+                currentPage = parseInt(this.getAttribute('data-page'));
+                fetchProperties();
+            });
+            paginationEl.appendChild(btn);
+        }
+
+        if (currentPage < totalPages) {
+            var nextBtn = document.createElement('button');
+            nextBtn.textContent = window.gardablickI18n ? window.gardablickI18n.t('listings.next') : 'Avanti';
+            nextBtn.className = 'text-[#02033b] text-[16px] font-medium hover:opacity-70 transition-opacity';
+            nextBtn.addEventListener('click', function() {
+                currentPage++;
+                fetchProperties();
+            });
+            paginationEl.appendChild(nextBtn);
+        }
+    }
+
+    function fetchProperties() {
+        showSkeletons();
+        fetch(buildApiUrl())
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                gridEl.textContent = '';
+                var results = data.results || [];
+                if (results.length === 0) {
+                    var msg = document.createElement('p');
+                    msg.className = 'text-[#727272] text-[18px] col-span-3 text-center py-12';
+                    msg.textContent = window.gardablickI18n ? window.gardablickI18n.t('listings.noProperties') : 'Nessun immobile trovato.';
+                    gridEl.appendChild(msg);
+                } else {
+                    results.forEach(function(p) {
+                        gridEl.appendChild(createCard(p));
+                    });
+                }
+                renderPagination(data.count || 0);
+            })
+            .catch(function() {
+                gridEl.textContent = '';
+                var msg = document.createElement('p');
+                msg.className = 'text-red-500 text-[16px] col-span-3 text-center py-12';
+                msg.textContent = window.gardablickI18n ? window.gardablickI18n.t('listings.loadFailed') : 'Caricamento immobili fallito.';
+                gridEl.appendChild(msg);
+            });
+    }
+
+    /* Sort dropdown */
+    var sortToggle = document.getElementById('sort-dropdown-toggle');
+    var sortMenu = document.getElementById('sort-menu');
+    var sortLabel = document.getElementById('sort-label');
+    var sortArrow = document.getElementById('sort-arrow');
+
+    sortToggle.addEventListener('click', function() {
+        sortMenu.classList.toggle('hidden');
+        sortArrow.style.transform = sortMenu.classList.contains('hidden') ? '' : 'rotate(180deg)';
+    });
+    sortMenu.querySelectorAll('button').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            currentSort = this.getAttribute('data-sort');
+            sortLabel.textContent = this.textContent;
+            sortMenu.classList.add('hidden');
+            sortArrow.style.transform = '';
+            currentPage = 1;
+            fetchProperties();
+        });
+    });
+    document.addEventListener('click', function(e) {
+        if (!document.getElementById('sort-dropdown-wrapper').contains(e.target)) {
+            sortMenu.classList.add('hidden');
+            sortArrow.style.transform = '';
+        }
+    });
+
+    /* Search button */
+    document.getElementById('listing-search-btn').addEventListener('click', function() {
+        var params = new URLSearchParams();
+        var mun = document.getElementById('filter-municipality').value;
+        var price = document.getElementById('filter-price').value;
+        var type = document.getElementById('filter-type').value;
+
+        if (mun && mun !== 'all') params.set('location', mun);
+        if (price && price !== 'all') {
+            if (price === '1000000+') {
+                params.set('price_min', '1000000');
+            } else {
+                var parts = price.split('-');
+                if (parts[0]) params.set('price_min', parts[0]);
+                if (parts[1]) params.set('price_max', parts[1]);
+            }
+        }
+        if (type && type !== 'all') params.set('property_type', type);
+
+        var query = params.toString();
+        window.history.pushState({}, '', '/immobili/' + (query ? '?' + query : ''));
+        currentPage = 1;
+        fetchProperties();
+    });
+
+    /* Init */
+    initFiltersFromUrl();
+    fetchProperties();
+})();
+</script>
+{% endblock %}
