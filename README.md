@@ -4,6 +4,34 @@ Real estate agency website for **Gardablick Immobilien Srl**, based on Lake Gard
 
 ---
 
+## Screenshots
+
+### Homepage
+
+<p align="center">
+  <img src="screenshots/frontend.png" alt="Gardablick Homepage" width="100%" />
+</p>
+
+> The public-facing homepage featuring Lake Garda hero imagery, property search filters, cookie consent modal, and featured property listings.
+
+### Admin Login
+
+<p align="center">
+  <img src="screenshots/admin-login.png" alt="Admin Login" width="60%" />
+</p>
+
+> Custom branded login page powered by Django Unfold with the Gardablick logo and dark theme.
+
+### Admin Dashboard
+
+<p align="center">
+  <img src="screenshots/admin-dashboard.png" alt="Admin Dashboard" width="100%" />
+</p>
+
+> Full-featured admin panel for managing properties, contact messages, CMS pages, translations, and user settings.
+
+---
+
 ## Project Structure
 
 ```
